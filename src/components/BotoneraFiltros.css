@@ -1,0 +1,33 @@
+.botonera-filtros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem;
+  justify-content: flex-start;
+}
+
+.botonera-filtros__boton {
+  border: 1px solid transparent;
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  background: var(--paper-2);
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px rgba(21, 32, 27, 0.08);
+}
+
+.botonera-filtros__boton:hover {
+  background: #e6ddcf;
+}
+
+.botonera-filtros__boton.is-active {
+  background: var(--pine);
+  color: var(--paper);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 18px rgba(31, 94, 74, 0.24);
+  transform: scale(1.05);
+}
