@@ -1,0 +1,283 @@
+:root {
+    --ink: #15201B;
+    --pine: #1F5E4A;
+    --moss: #3E9C7A;
+    --marigold: #F2A03D;
+    --clay: #E8643C;
+    --paper: #F6F2E9;
+    --paper-2: #EFE9DC;
+    --line: #DED6C5;
+}
+
+.mis-pedidos {
+    min-height: 100vh;
+    padding: 48px 32px 64px;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.mis-pedidos-contenido {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+
+.mis-pedidos h1 {
+    margin: 0 0 32px;
+
+    font-family: "Fraunces", serif;
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -1px;
+
+    color: var(--ink);
+}
+
+.controles-pedidos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 32px;
+}
+
+.controles-pedidos button {
+    padding: 10px 18px;
+
+    border: 1px solid var(--line);
+    border-radius: 999px;
+
+    background-color: transparent;
+    color: var(--ink);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.controles-pedidos button:hover {
+    border-color: var(--pine);
+    color: var(--pine);
+}
+
+.controles-pedidos button.activo {
+    background-color: var(--pine);
+    border-color: var(--pine);
+    color: white;
+}
+
+.controles-pedidos button:active {
+    transform: scale(0.98);
+}
+
+.controles-pedidos input {
+    flex: 1 1 280px;
+
+    min-width: 240px;
+
+    padding: 12px 16px;
+
+    border: 1px solid var(--line);
+    border-radius: 10px;
+
+    background-color: #fffdf8;
+    color: var(--ink);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 14px;
+
+    outline: none;
+}
+
+.controles-pedidos input::placeholder {
+    color: #7c827d;
+}
+
+.controles-pedidos input:focus {
+    border-color: var(--moss);
+    box-shadow: 0 0 0 3px rgba(62, 156, 122, 0.12);
+}
+
+.listado-pedidos {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.pedido-card {
+    padding: 24px;
+
+    border: 1px solid var(--line);
+    border-radius: 16px;
+
+    background-color: #fffdf8;
+
+    box-shadow: 0 4px 14px rgba(21, 32, 27, 0.06);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.pedido-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(21, 32, 27, 0.09);
+}
+
+.pedido-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+
+    padding-bottom: 18px;
+    margin-bottom: 18px;
+
+    border-bottom: 1px solid var(--line);
+}
+
+.pedido-info h2 {
+    margin: 0 0 6px;
+
+    font-family: "Space Mono", monospace;
+    font-size: 16px;
+    font-weight: 700;
+
+    color: var(--ink);
+}
+
+.pedido-fecha {
+    margin: 0;
+
+    font-size: 13px;
+    color: #6f756f;
+}
+
+.pedido-estado {
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    background-color: var(--paper-2);
+    color: var(--pine);
+
+    font-size: 12px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.prenda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 10px 0;
+}
+
+.prenda-info h3 {
+    margin: 0 0 5px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    color: var(--ink);
+}
+
+.prenda-info p {
+    margin: 0;
+
+    font-size: 13px;
+    color: #747a75;
+}
+
+.prenda-precio {
+    font-family: "Space Mono", monospace;
+    font-size: 15px;
+    font-weight: 700;
+
+    color: var(--pine);
+}
+
+.pedido-acciones {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 20px;
+}
+
+.pedido-acciones button {
+    padding: 10px 16px;
+
+    border: 1px solid var(--pine);
+    border-radius: 8px;
+
+    background-color: transparent;
+    color: var(--pine);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.pedido-acciones button:hover {
+    background-color: var(--pine);
+    color: white;
+}
+
+.pedido-acciones button:last-child {
+    background-color: var(--clay);
+    border-color: var(--clay);
+    color: white;
+}
+
+.pedido-acciones button:last-child:hover {
+    background-color: #d95732;
+    border-color: #d95732;
+}
+
+@media (max-width: 700px) {
+
+    .mis-pedidos {
+        padding: 32px 16px 48px;
+    }
+
+    .mis-pedidos h1 {
+        font-size: 38px;
+    }
+
+    .pedido-header {
+        flex-direction: column;
+    }
+
+    .pedido-estado {
+        align-self: flex-start;
+    }
+
+    .prenda {
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .pedido-acciones {
+        justify-content: flex-start;
+    }
+}
