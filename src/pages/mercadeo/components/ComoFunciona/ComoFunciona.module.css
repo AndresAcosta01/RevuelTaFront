@@ -1,0 +1,26 @@
+.root {
+background-color: #ffffff;
+}
+
+.title {
+color: var(--ink);
+}
+
+.list {
+width: 100%;
+}
+
+.item {
+width: 100%;
+}
+
+.step {
+width: 26px;
+height: 26px;
+background-color: var(--paper-2);
+color: var(--ink);
+}
+
+.text {
+color: var(--ink);
+}

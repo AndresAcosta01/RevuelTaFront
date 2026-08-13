@@ -1,0 +1,36 @@
+.root {
+background-color: #ffffff;
+}
+
+.title {
+color: var(--ink);
+}
+
+.list {
+width: 100%;
+}
+
+.item {
+width: 100%;
+}
+
+.meta {
+width: 100%;
+min-width: 0;
+}
+
+.iconWrap {
+width: 32px;
+height: 32px;
+background-color: var(--paper);
+color: var(--pine);
+flex-shrink: 0;
+}
+
+.label {
+color: var(--ink);
+}
+
+.points {
+color: var(--moss);
+}
