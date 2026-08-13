@@ -1,0 +1,72 @@
+.accionesHeader {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.botonIcono {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    padding: 6px;
+    color: var(--color-ink);
+    transition: background-color 0.5s ease;
+    position: relative;
+}
+
+.botonIcono:hover {
+    background-color: var(--color-paper-2);
+}
+
+.botonIcono svg {
+    width: 20px;
+    height: 20px;
+}
+
+.botonPublicar {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    background-color: var(--color-pine);
+    color: var(--color-paper-2);
+    font-family: var(--font-body);
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    padding: 0.7rem 1rem;
+    padding-right: 1.25rem;
+    transition: background-color 0.25s ease;
+}
+
+.iconoBotonPublicar {
+    width: 20px;
+    height: 20px;
+    color: var(--color-paper-2);
+    stroke-width: 2.5px;
+}
+
+.botonPublicar:hover {
+    background-color: var(--color-moss);
+}
+
+.indicadorNotificacion {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--color-clay);
+    width: 6.5px;
+    height: 6.5px;
+    top: 0;
+    right: 0;
+}
+
+.contadorCarrito {
+    position: absolute;
+    background-color: var(--color-clay);
+    border-radius: 50%;
+    width: 50%;
+    height: 50%;
+}
