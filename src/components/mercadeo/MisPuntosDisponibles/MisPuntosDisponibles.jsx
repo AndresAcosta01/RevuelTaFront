@@ -1,4 +1,3 @@
-
 import styles from './MisPuntosDisponibles.module.css';
 
 const MisPuntosDisponibles = ({ puntosDisponibles, onVerHistorial }) => {

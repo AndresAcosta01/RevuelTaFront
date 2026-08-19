@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { catalogoDescuentos, categoriasDescuentos } from '../../../../data/descuentosMock';
+import { catalogoDescuentos, categoriasDescuentos } from '../../../data/descuentosMock';
 import Paginacion from '../Paginacion/Paginacion';
 import styles from './CatalogoDescuentos.module.css';
 
@@ -61,9 +61,8 @@ const CatalogoDescuentos = ({ onSeleccionarCanje }) => {
               className={`${styles.card} card border-0 h-100`}
               role="button"
               tabIndex={0}
-              onClick={() => {}}
-              onKeyDown={(e) => e.key === 'Enter' && e.preventDefault()}
-              aria-disabled="true"
+              onClick={() => onSeleccionarCanje?.(item)}
+              onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onSeleccionarCanje?.(item)}
             >
               <div className="p-2">
                 <span className={`${styles.tag} badge rounded-pill mb-2`}>
@@ -83,9 +82,8 @@ const CatalogoDescuentos = ({ onSeleccionarCanje }) => {
                   className={`${styles.confirmButton} btn btn-sm w-100 fw-bold border-0`}
                   onClick={(e) => {
                     e.stopPropagation();
+                    onSeleccionarCanje?.(item);
                   }}
-                  disabled
-                  aria-disabled="true"
                 >
                   <i className="bi bi-gift me-1"></i> Canjear
                 </button>

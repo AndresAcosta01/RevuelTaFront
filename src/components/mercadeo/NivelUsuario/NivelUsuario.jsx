@@ -1,4 +1,3 @@
-
 import styles from './NivelUsuario.module.css';
 
 const NivelUsuario = ({ nivelActual, siguienteNivel, puntosFaltantes, progresoPorcentaje, onVerNiveles }) => {

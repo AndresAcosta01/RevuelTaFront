@@ -1,4 +1,3 @@
-
 import styles from './ComoFunciona.module.css';
 
 const pasos = [

@@ -1,5 +1,5 @@
 import styles from './CampanasActivas.module.css';
-import { campanas } from '../../../../data/campanasMock';
+import { campanas } from '../../../data/campanasMock';
 
 const CampanasActivas = ({ onVerTodas }) => {
   const activas = campanas.filter((c) => c.estado === 'Activa').slice(0, 2);

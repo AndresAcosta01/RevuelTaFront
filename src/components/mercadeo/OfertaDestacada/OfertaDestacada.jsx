@@ -1,4 +1,3 @@
-
 import styles from './OfertaDestacada.module.css';
 
 const OfertaDestacada = ({ oferta, onVerOfertas }) => {

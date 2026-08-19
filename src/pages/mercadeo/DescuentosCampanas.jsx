@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
-import MisPuntosDisponibles from './components/MisPuntosDisponibles/MisPuntosDisponibles';
-import ComoFunciona from './components/ComoFunciona/ComoFunciona';
-import NivelUsuario from './components/NivelUsuario/NivelUsuario';
-import OfertaDestacada from './components/OfertaDestacada/OfertaDestacada';
-import CampanasActivas from './components/CampanasActivas/CampanasActivas';
-import CatalogoDescuentos from './components/CatalogoDescuentos/CatalogoDescuentos';
-import AccionesPuntos from './components/AccionesPuntos/AccionesPuntos';
+import MisPuntosDisponibles from '../../components/mercadeo/MisPuntosDisponibles/MisPuntosDisponibles';
+import ComoFunciona from '../../components/mercadeo/ComoFunciona/ComoFunciona';
+import NivelUsuario from '../../components/mercadeo/NivelUsuario/NivelUsuario';
+import OfertaDestacada from '../../components/mercadeo/OfertaDestacada/OfertaDestacada';
+import CampanasActivas from '../../components/mercadeo/CampanasActivas/CampanasActivas';
+import CatalogoDescuentos from '../../components/mercadeo/CatalogoDescuentos/CatalogoDescuentos';
+import AccionesPuntos from '../../components/mercadeo/AccionesPuntos/AccionesPuntos';
 
-import VentanaModalNivelesBeneficios from './modales/VentanaModalNivelesBeneficios';
-import VentanaModalConfirmarCanje from './modales/VentanaModalConfirmarCanje';
+import VentanaModalNivelesBeneficios from '../../components/mercadeo/modales/VentanaModalNivelesBeneficios';
+import VentanaModalConfirmarCanje from '../../components/mercadeo/modales/VentanaModalConfirmarCanje';
 
 import { puntosUsuario as puntosUsuarioMock } from '../../data/puntosMock';
 import { nivelesPrograma } from '../../data/nivelesMock';
