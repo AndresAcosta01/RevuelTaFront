@@ -30,13 +30,15 @@ const DescuentosCampanas = () => {
   const handleVerTodasCampanas = () => setModalActiva('campanas');
   const handleVerOfertas = () => console.log('Pendiente MER-DC05: VentanaModalOfertaDestacada');
 
+  // Modal openings for 'niveles' and 'canje' are intentionally disabled.
+  // Keep handlers as no-ops to preserve UI but prevent modals from opening.
   const handleVerNiveles = () => {
-    setModalActiva('niveles');
+    console.log('Modal de niveles deshabilitado');
   };
 
   const handleSeleccionarCanje = (descuento) => {
-    setDescuentoSeleccionado(descuento);
-    setModalActiva('canje');
+    console.log('Canje deshabilitado para evitar abrir modal', descuento);
+    // no-op: descuento no se asigna y modal no se abre
   };
 
   const handleCerrarModal = () => {
