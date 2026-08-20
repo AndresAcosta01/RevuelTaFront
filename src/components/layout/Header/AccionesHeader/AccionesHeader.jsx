@@ -1,25 +1,58 @@
 import { Bell, LogOut, Plus, ShoppingCart, UserRound } from "lucide-react"
 import styles from "./AccionesHeader.module.css"
-import opcionesMenuPerfil from "./OpcionMenuPerfil/opcionesMenuPerfil"
-import { useState } from "react"
-import OpcionMenuPerfil from "./OpcionMenuPerfil/OpcionMenuPerfil"
+import PanelIdentificacion from "./PanelIdentificacion/PanelIdentificacion"
+import PanelNotificaciones from "./PanelNotificaciones/PanelNotificaciones"
+import PanelPerfil from "./PanelPerfil/PanelPerfil"
+import { obtenerNotificaciones } from "../../../../services/notificacionesService"
+import { useEffect, useRef, useState } from "react"
 
 const AccionesHeader = () => {
-    const [menuPerfilAbierto, setMenuPerfilAbierto] = useState(false);
+    const [panelActivo, setPanelActivo] = useState(null);
+    const estaAutenticado = true;
+    const notificaciones = obtenerNotificaciones();
+    const contenedorAcciones = useRef(null)
 
     function alternarMenuPerfil() {
-        setMenuPerfilAbierto(!menuPerfilAbierto)
+        const panelDestino = estaAutenticado ? "perfil" : "identificacion";
+        setPanelActivo(
+            panelActivo === panelDestino ? null : panelDestino
+        )
+    }
+    function alternarNotificaciones() {
+        const panelDestino = estaAutenticado ? "notificaciones" : "identificacion";
+
+        setPanelActivo(
+            panelActivo === panelDestino ? null : panelDestino
+        )
+    }
+    function manejarClickFuera(event) {
+        if (
+            panelActivo !== null &&
+            contenedorAcciones.current &&
+            !contenedorAcciones.current.contains(event.target)
+        ) {
+            setPanelActivo(null)
+        }
+    }
+    const cerrarMenuPerfil = () => {
+        setPanelActivo(null)
     }
 
-    const cerrarMenuPerfil = () => {
-        setMenuPerfilAbierto(false)
-    }
+    useEffect(() => {
+        document.addEventListener("mousedown", manejarClickFuera)
+
+        return () => {
+            document.removeEventListener("mousedown", manejarClickFuera)
+        }
+    }, [panelActivo])
 
     return (
-        <div className={styles.accionesHeader}>
-            <button className={styles.botonIcono}>
+        <div className={styles.accionesHeader} ref={contenedorAcciones}>
+            <button className={styles.botonIcono} onClick={alternarNotificaciones}>
                 <Bell />
-                <span className={styles.indicadorNotificacion}></span>
+                {notificaciones.length > 0 && (
+                    <span className={styles.indicadorNotificacion}></span>
+                )}
             </button>
             <button className={styles.botonIcono}>
                 <ShoppingCart />
@@ -32,33 +65,17 @@ const AccionesHeader = () => {
                 <Plus className={styles.iconoBotonPublicar} />
                 Publicar prenda
             </button>
-            {menuPerfilAbierto && (
-                <div className={styles.menuPerfil}>
-                    <div className={styles.datosPerfil}>
-                        <div className={styles.usuarioPerfil}>
-                            <div className={styles.contenedorFotoPerfil}>
-                                <UserRound />
-                            </div>
-                            <p className={styles.nombreUsuario}>Nombre Usuario</p>
-                        </div>
-                        <span className={styles.puntosUsuario}>0 pts</span>
-                    </div>
-                    {opcionesMenuPerfil.map((opcion) => (
-                        <OpcionMenuPerfil
-                            key={opcion.id}
-                            Icono={opcion.Icono}
-                            texto={opcion.texto}
-                            ruta={opcion.ruta}
-                            onClick={cerrarMenuPerfil}
-                        />
-                    ))}
-                    <div className={styles.contenedorCerrarSesion}>
-                        <OpcionMenuPerfil
-                            Icono={LogOut}
-                            texto={"Cerrar Sesión"}
-                        />
-                    </div>
-                </div>)}
+            {panelActivo === "perfil" && (
+                <PanelPerfil
+                    cerrarMenuPerfil={cerrarMenuPerfil} />
+            )}
+            {panelActivo === "notificaciones" && (
+                <PanelNotificaciones
+                    notificaciones={notificaciones} />
+            )}
+            {panelActivo === "identificacion" && (
+                <PanelIdentificacion />
+            )}
         </div>
     )
 }

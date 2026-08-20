@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom"
 import styles from "./Logo.module.css"
+import { RUTAS } from "../../../../constants/rutas"
 
 const Logo = () => {
     return (
-        <div>
-            <span className={styles.logo}>ReVuelta</span>
-        </div>
+        <Link to={RUTAS.LANDING_PAGE} className={styles.logo}>
+            ReVuelta
+        </Link>
     )
 }
 
