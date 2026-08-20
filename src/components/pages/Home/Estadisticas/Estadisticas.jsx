@@ -1,4 +1,4 @@
-import styles from "../../../../styles/Estadisticas.module.css";
+import styles from "./Estadisticas.module.css";
 import estadisticas from "../../../../data/estadisticas";
 
 function Estadisticas() {

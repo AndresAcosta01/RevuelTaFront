@@ -1,4 +1,4 @@
-import styles from "../../../../styles/CategoriasDestacadas.module.css";
+import styles from "./CategoriasDestacadas.module.css";
 
 function CategoriaCard({ nombre, imagen, contador, onSeleccionar }) {
     const handleKeyDown = (e) => {

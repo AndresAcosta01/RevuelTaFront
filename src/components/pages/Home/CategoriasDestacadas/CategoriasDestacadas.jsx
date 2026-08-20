@@ -1,6 +1,6 @@
 import useCategorias from "../../../../hooks/useCategorias";
 import CategoriaCard from "./CategoriaCard";
-import styles from "../../../../styles/CategoriasDestacadas.module.css";
+import styles from "./CategoriasDestacadas.module.css";
 
 function CategoriasDestacadas({ onSeleccionarCategoria }) {
     const { categorias, cargando, error } = useCategorias();

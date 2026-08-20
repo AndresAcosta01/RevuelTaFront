@@ -1,5 +1,5 @@
 import Hero from "./Home/Hero/Hero";
-import heroImg from "../../assets/hero_fashion_concept.png";
+import heroImg from "../../assets/landing_img.jpeg";
 import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacadas";
 import Estadisticas from "./Home/Estadisticas/Estadisticas";
 function Home() {
