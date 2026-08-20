@@ -1,9 +1,21 @@
-.root {}
-.header {}
-.link {}
-.list {}
-.item {}
-.thumb {}
-.name {}
-.description {}
-.vigencia {}
+.root {
+  background-color: #ffffff;
+}
+.title {
+  color: var(--ink);
+}
+.link {
+  color: var(--pine);
+}
+.thumb {
+  width: 48px;
+  height: 48px;
+  background-color: var(--paper-2);
+  color: var(--line);
+}
+.name {
+  color: var(--ink);
+}
+.vigencia {
+  color: var(--moss);
+}

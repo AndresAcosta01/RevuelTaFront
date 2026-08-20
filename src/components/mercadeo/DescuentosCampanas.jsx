@@ -10,6 +10,7 @@ import AccionesPuntos from '../../components/mercadeo/AccionesPuntos/AccionesPun
 
 import VentanaModalNivelesBeneficios from '../../components/mercadeo/modales/VentanaModalNivelesBeneficios';
 import VentanaModalConfirmarCanje from '../../components/mercadeo/modales/VentanaModalConfirmarCanje';
+import VentanaModalCampanas from '../../components/mercadeo/modales/VentanaModalCampanas';
 
 import { puntosUsuario as puntosUsuarioMock } from '../../data/puntosMock';
 import { nivelesPrograma } from '../../data/nivelesMock';
@@ -26,16 +27,14 @@ const DescuentosCampanas = () => {
   const [descuentoSeleccionado, setDescuentoSeleccionado] = useState(null);
 
   const handleVerHistorial = () => console.log('Pendiente MER-DC06: VentanaModalHistorialPuntos');
-  const handleVerTodasCampanas = () => console.log('Pendiente MER-DC04: VentanaModalCampanas');
+  const handleVerTodasCampanas = () => setModalActiva('campanas');
   const handleVerOfertas = () => console.log('Pendiente MER-DC05: VentanaModalOfertaDestacada');
 
   const handleVerNiveles = () => {
-    if (true) return;
     setModalActiva('niveles');
   };
 
   const handleSeleccionarCanje = (descuento) => {
-    if (true) return;
     setDescuentoSeleccionado(descuento);
     setModalActiva('canje');
   };
@@ -124,6 +123,10 @@ const DescuentosCampanas = () => {
           onCerrar={handleCerrarModal}
           onCanjeExitoso={handleCanjeExitoso}
         />
+      )}
+
+      {modalActiva === 'campanas' && (
+        <VentanaModalCampanas onCerrar={handleCerrarModal} />
       )}
     </div>
   );
