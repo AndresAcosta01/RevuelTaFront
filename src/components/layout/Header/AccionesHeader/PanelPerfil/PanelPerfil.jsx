@@ -3,7 +3,7 @@ import styles from "./PanelPerfil.module.css"
 import opcionesMenuPerfil from "../OpcionMenuPerfil/opcionesMenuPerfil"
 import OpcionMenuPerfil from "../OpcionMenuPerfil/OpcionMenuPerfil"
 
-const PanelPerfil = (cerrarMenuPerfil) => {
+const PanelPerfil = (cerrarPanelActivo) => {
     return (
         <div className={styles.menuPerfil}>
             <div className={styles.datosPerfil}>
@@ -21,7 +21,7 @@ const PanelPerfil = (cerrarMenuPerfil) => {
                     Icono={opcion.Icono}
                     texto={opcion.texto}
                     ruta={opcion.ruta}
-                    onClick={cerrarMenuPerfil}
+                    onClick={cerrarPanelActivo}
                 />
             ))}
             <div className={styles.contenedorCerrarSesion}>

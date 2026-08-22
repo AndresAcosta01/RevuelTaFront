@@ -10,7 +10,7 @@
     padding: 0.5rem 1rem 1rem 1rem;
     font-family: var(--font-body);
     font-weight: 600;
-    background-color: var(--color-paper);
+    background-color: #ffffff;
     height: 30rem;
     z-index: 10;
 }
@@ -22,7 +22,7 @@
     width: 2.2rem;
     height: 2.2rem;
     border: 1px solid var(--color-line);
-    background-color: var(--color-paper-2);
+    background-color: var(--color-paper);
     border-radius: 50%;
 }
 
@@ -61,7 +61,7 @@
     border-radius: 5px;
     padding: 0.4rem 1rem;
     font-size: 14px;
-    background-color: var(--color-paper-2);
+    background-color: var(--color-paper);
 }
 
 .nombreUsuario{

@@ -1,28 +1,29 @@
-import { Bell, LogOut, Plus, ShoppingCart, UserRound } from "lucide-react"
+import { Bell, Plus, ShoppingCart, UserRound } from "lucide-react"
 import styles from "./AccionesHeader.module.css"
 import PanelIdentificacion from "./PanelIdentificacion/PanelIdentificacion"
 import PanelNotificaciones from "./PanelNotificaciones/PanelNotificaciones"
 import PanelPerfil from "./PanelPerfil/PanelPerfil"
 import { obtenerNotificaciones } from "../../../../services/notificacionesService"
 import { useEffect, useRef, useState } from "react"
+import { NavLink } from "react-router-dom"
+import { RUTAS } from "../../../../constants/rutas"
 
 const AccionesHeader = () => {
     const [panelActivo, setPanelActivo] = useState(null);
     const estaAutenticado = true;
     const notificaciones = obtenerNotificaciones();
     const contenedorAcciones = useRef(null)
+    const cantidadCarrito = 10;
+    const contadorCarrito = cantidadCarrito > 10 ? "10+" : cantidadCarrito
 
     function alternarMenuPerfil() {
-        const panelDestino = estaAutenticado ? "perfil" : "identificacion";
         setPanelActivo(
-            panelActivo === panelDestino ? null : panelDestino
+            panelActivo === "perfil" ? null : "perfil"
         )
     }
     function alternarNotificaciones() {
-        const panelDestino = estaAutenticado ? "notificaciones" : "identificacion";
-
         setPanelActivo(
-            panelActivo === panelDestino ? null : panelDestino
+            panelActivo === "notificaciones" ? null : "notificaciones"
         )
     }
     function manejarClickFuera(event) {
@@ -34,7 +35,7 @@ const AccionesHeader = () => {
             setPanelActivo(null)
         }
     }
-    const cerrarMenuPerfil = () => {
+    const cerrarPanelActivo = () => {
         setPanelActivo(null)
     }
 
@@ -54,26 +55,50 @@ const AccionesHeader = () => {
                     <span className={styles.indicadorNotificacion}></span>
                 )}
             </button>
-            <button className={styles.botonIcono}>
-                <ShoppingCart />
-                <span className={styles.contadorCarrito}>54+</span>
-            </button>
+            {estaAutenticado ? (
+                <NavLink to={RUTAS.CARRITO} className={styles.botonIcono} onClick={cerrarPanelActivo}>
+                    <ShoppingCart />
+                    {cantidadCarrito > 0 && (
+                        <span className={styles.contadorCarrito}>
+                            {contadorCarrito}
+                        </span>
+                    )}
+                </NavLink>
+            ) : (
+                <button className={styles.botonIcono} onClick={() =>
+                    setPanelActivo(panelActivo === "carrito" ? null : "carrito")}>
+                    <ShoppingCart />
+                    {cantidadCarrito > 0 && (
+                        <span className={styles.contadorCarrito}>
+                            {contadorCarrito}
+                        </span>
+                    )}
+                </button>
+            )}
             <button className={styles.botonIcono} onClick={alternarMenuPerfil}>
                 <UserRound />
             </button>
-            <button className={styles.botonPublicar}>
-                <Plus className={styles.iconoBotonPublicar} />
-                Publicar prenda
-            </button>
-            {panelActivo === "perfil" && (
-                <PanelPerfil
-                    cerrarMenuPerfil={cerrarMenuPerfil} />
+            {estaAutenticado ? (
+                <NavLink to={RUTAS.PUBLICAR_PRENDA} className={styles.botonPublicar} onClick={cerrarPanelActivo}>
+                    <Plus className={styles.iconoBotonPublicar} />
+                    Publicar prenda
+                </NavLink>
+            ) : (
+                <button className={styles.botonPublicar} onClick={() =>
+                    setPanelActivo(panelActivo === "publicar" ? null : "publicar")}>
+                    <Plus className={styles.iconoBotonPublicar} />
+                    Publicar prenda
+                </button>
             )}
-            {panelActivo === "notificaciones" && (
+            {estaAutenticado && panelActivo === "perfil" && (
+                <PanelPerfil
+                    cerrarPanelActivo={cerrarPanelActivo} />
+            )}
+            {estaAutenticado && panelActivo === "notificaciones" && (
                 <PanelNotificaciones
                     notificaciones={notificaciones} />
             )}
-            {panelActivo === "identificacion" && (
+            {!estaAutenticado && panelActivo !== null && (
                 <PanelIdentificacion />
             )}
         </div>
