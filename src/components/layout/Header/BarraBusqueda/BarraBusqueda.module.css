@@ -1,10 +1,10 @@
 .campoBusqueda {
     font-family: var(--font-body);
     padding: 0.6rem;
-    padding-left: 2.2rem;
+    padding-left: 1rem;
     border: 1px solid var(--color-line);
     border-radius: 2rem;
-    width: 20rem;
+    width: 30rem;
     color: var(--color-ink);
 }
 
@@ -23,11 +23,95 @@
 }
 
 .iconoBusqueda {
+    color: var(--color-paper-2);
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke-width: 2.5px;
+}
+
+.contenedorIconoBusqueda {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2.6rem;
+    height: 2rem;
+    cursor: pointer;
+    background-color: var(--color-pine);
+    border: none;
+    border-radius: 20px;
     position: absolute;
-    left: 10px;
+    right: 2.5px;
     top: 50%;
     transform: translateY(-50%);
+    padding: 0;
+    transition: background-color 0.3s ease;
+}
+
+.contenedorIconoBusqueda:hover {
+    background-color: var(--color-moss);
+}
+
+.resultadosBusqueda {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
+    border: 1px solid var(--color-paper-2);
+    border-radius: 5px;
+}
+
+.buscador {
+    position: relative;
+}
+
+.resultadoBusqueda {
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    display: flex;
+    text-decoration: none;
     color: var(--color-ink);
-    width: 18px;
-    height: 18px;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.resultadoBusqueda:hover {
+    background-color: var(--color-paper-2);
+}
+
+.tituloResultado {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.vendedorResultado {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+.iconoBusqueda2 {
+    color: var(--color-ink);
+    width: 1rem;
+    height: 1rem;
+    stroke-width: 2.3px;
+    margin-top: 1px;
+}
+
+.informacionVendedor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calificacionVendedor {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: auto;
 }

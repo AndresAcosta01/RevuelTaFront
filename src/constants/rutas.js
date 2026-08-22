@@ -4,6 +4,9 @@ export const RUTAS = {
     PEDIDOS: "/pedidos",
     TRUEQUES: "/trueques",
     CAMPANAS_DESCUENTOS: "/campanas-descuentos",
+    CARRITO: "/carrito",
+    CATALOGO: "/catalogo",
+    PUBLICAR_PRENDA: "/publicar-prenda",
     REGISTRO: "/registro",
     INICIAR_SESION: "/iniciar-sesion"
 }
