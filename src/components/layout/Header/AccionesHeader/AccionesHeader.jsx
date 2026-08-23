@@ -10,7 +10,7 @@ import { RUTAS } from "../../../../constants/rutas"
 
 const AccionesHeader = () => {
     const [panelActivo, setPanelActivo] = useState(null);
-    const estaAutenticado = true;
+    const estaAutenticado = false;
     const notificaciones = obtenerNotificaciones();
     const contenedorAcciones = useRef(null)
     const cantidadCarrito = 10;
