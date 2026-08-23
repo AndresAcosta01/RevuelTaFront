@@ -34,7 +34,7 @@ const Footer = () => {
                     <h2 className={styles.titulosFooter}>Catálogo</h2>
                     <div className={styles.contenedoresFooter}>
                         {categoriasMock.map((categoria) => (
-                            <Link to={`${RUTAS.CATALOGO}?busquedas=${categoria.nombre}`} key={categoria.id} className={styles.linksFooter}>
+                            <Link to={`${RUTAS.CATALOGO}?busqueda=${categoria.nombre}`} key={categoria.id} className={styles.linksFooter}>
                                 {categoria.nombre}
                             </Link>
                         ))}
@@ -43,15 +43,15 @@ const Footer = () => {
                 <div className={styles.contenedoresFooter}>
                     <h2 className={styles.titulosFooter}>Zona Trueques</h2>
                     {zonaTruequesMock.map((opcion) => (
-                        <Link to={`${opcion.ruta}?busquedas=${opcion.nombre}`} key={opcion.id} className={styles.linksFooter}>
-                            {opcion.nombre}
-                        </Link>
+                        opcion.tipo === "link"
+                            ? <Link to={`${opcion.ruta}${opcion.hash}`} key={opcion.id} className={styles.linksFooter}>{opcion.nombre}</Link>
+                            : <button type="button" key={opcion.id} className={styles.linksFooter}>{opcion.nombre}</button>
                     ))}
                 </div>
                 <div className={styles.contenedoresFooter}>
                     <h2 className={styles.titulosFooter}>Legal</h2>
                     {legalMock.map((opcion) => (
-                        <Link to={`${opcion.ruta}?busquedas=${opcion.nombre}`} key={opcion.id} className={styles.linksFooter}>
+                        <Link to={opcion.ruta} key={opcion.id} className={styles.linksFooter}>
                             {opcion.nombre}
                         </Link>
                     ))}

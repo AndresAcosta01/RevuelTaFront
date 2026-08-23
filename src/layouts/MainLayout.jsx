@@ -3,7 +3,7 @@ import styles from "./Layout.module.css"
 import Header from "../components/layout/Header/Header"
 import Footer from "../components/layout/Footer/Footer"
 
-const MainLatout = () => {
+const MainLayout = () => {
     return (
         <>
             <Header />
@@ -15,4 +15,4 @@ const MainLatout = () => {
     )
 }
 
-export default MainLatout
+export default MainLayout

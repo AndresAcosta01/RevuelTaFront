@@ -22,7 +22,6 @@
 .linksFooter {
     text-decoration: none;
     color: var(--color-ink);
-    font-size: 0.95rem;
     margin: 0.45rem 0;
     transition: color 0.2s ease;
     font-size: 0.85rem;

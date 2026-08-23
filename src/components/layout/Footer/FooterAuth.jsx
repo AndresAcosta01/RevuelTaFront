@@ -8,7 +8,7 @@ const FooterAuth = () => {
             <span className={styles.derechosReservados}>© 2026 ReVuelta</span>
             <div className={styles.contenedorRutas}>
                 {legalMock.slice(0, 3).map((opcion) => (
-                    <Link to={`${opcion.ruta}?busquedas=${opcion.nombre}`} key={opcion.id} className={styles.linksFooter}>
+                    <Link to={opcion.ruta} key={opcion.id} className={styles.linksFooter}>
                         {opcion.nombreCorto}
                     </Link>
                 ))}
