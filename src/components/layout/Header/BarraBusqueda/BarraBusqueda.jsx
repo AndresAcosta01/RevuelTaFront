@@ -108,6 +108,12 @@ const BarraBusqueda = () => {
                     )}
                 </div>
             )}
+            {mostrarSugerencias && (
+                <div
+                    className={styles.fondoBusqueda}
+                    onClick={() => setMostrarSugerencias(false)}
+                ></div>
+            )}
         </div>
     )
 }
