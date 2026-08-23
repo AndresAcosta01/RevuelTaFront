@@ -1,0 +1,34 @@
+.footer {
+    border: 1px solid var(--color-line);
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 1rem 3rem;
+    text-align: center;
+}
+
+.derechosReservados {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.contenedorRutas {
+    display: flex;
+    gap: 1rem;
+}
+
+.linksFooter {
+    text-decoration: none;
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    margin: 0.45rem 0;
+    transition: color 0.2s ease;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.linksFooter:hover {
+    color: var(--color-moss);
+}
