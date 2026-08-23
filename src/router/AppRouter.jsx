@@ -9,6 +9,9 @@ import CampanasDescuentos from "../pages/_pruebas/CampanasDescuentosPruebas"
 import CarritoPrueba from "../pages/_pruebas/CarritoPrueba"
 import PublicarPrendaPrueba from "../pages/_pruebas/PublicarPrendaPrueba"
 import CatalogoPrueba from "../pages/_pruebas/CatalogoPrueba"
+import IniciarSesionPrueba from "../pages/_pruebas/IniciarSesionPrueba"
+import AuthLayout from "../layouts/AuthLayout"
+import RegistroPrueba from "../pages/_pruebas/RegistroPrueba"
 
 const AppRouter = () => {
     return (
@@ -23,6 +26,10 @@ const AppRouter = () => {
                     <Route path={RUTAS.CARRITO} element={<CarritoPrueba />}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={<PublicarPrendaPrueba />}/>
                     <Route path={RUTAS.CATALOGO} element={<CatalogoPrueba />}/>
+                </Route>
+                <Route element={<AuthLayout />}>
+                    <Route path={RUTAS.REGISTRO} element={<RegistroPrueba />}/>
+                    <Route path={RUTAS.INICIAR_SESION} element={<IniciarSesionPrueba />}/>
                 </Route>
             </Routes>
         </BrowserRouter>
