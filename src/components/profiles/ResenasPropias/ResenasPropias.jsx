@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './ResenasPropias.module.css';
 import BotonPerfilNavegacion from '../botonNavecionPerfil/BotonPerfilNavegacion';
 import TarjetaResena from '../tarjetaReseña/TarjetaResena';

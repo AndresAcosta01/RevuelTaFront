@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { ConnectedUserContext } from '../../context/ConnectedUser.context';
 import ImagenPerfil from '../../components/profiles/imagenPerfil/ImagenPerfil';
@@ -31,9 +31,9 @@ const Profile = () => {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const [myProfile, setMyProfile] = useState(false);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
-    const [promedio, setPromedio] = useState(0);
+    const [, setLoading] = useState(true);
+    const [, setError] = useState(false);
+    const [promedio] = useState(4.8);
 
     useEffect(() => {
         const fetchUserProfile = async () => {
@@ -44,11 +44,17 @@ const Profile = () => {
                     return;
                 }
 
-                const response = await fetch(``);
+                if (!id) {
+                    setUser(connectedUser || { nombre: 'Usuario ReVuelta', fechaRegistro: '2026' });
+                    setMyProfile(true);
+                    return;
+                }
+
+                const response = await fetch(`/api/usuarios/${id}`);
                 if (!response.ok) throw new Error("Error al obtener el perfil");
                 const data = await response.json();
                 setUser(data);
-            } catch (err) {
+            } catch {
                 setError(true);
             } finally {
                 setLoading(false);

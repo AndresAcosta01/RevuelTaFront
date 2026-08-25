@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './ImagenPerfil.module.css';
 import { FaUser } from 'react-icons/fa';
 

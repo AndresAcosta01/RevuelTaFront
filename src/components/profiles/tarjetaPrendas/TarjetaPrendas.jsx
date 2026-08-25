@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { HiPencil } from 'react-icons/hi2';
 import styles from './TarjetaPrendas.module.css';
 import BotonPerfilNavegacion from '../botonNavecionPerfil/BotonPerfilNavegacion';

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import TarjetaPrendas from '../tarjetaPrendas/TarjetaPrendas';
 import styles from './PrendasPropias.module.css';
 

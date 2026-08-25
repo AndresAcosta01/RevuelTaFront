@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import CalificacionEstrellas from '../estrellasCalificacion/CalificacionEstrellas';
 import styles from './TarjetaResena.module.css';

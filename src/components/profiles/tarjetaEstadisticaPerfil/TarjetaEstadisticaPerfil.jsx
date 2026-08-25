@@ -1,4 +1,4 @@
-import React from 'react';
+
 import styles from './TarjetaEstadisticaPerfil.module.css';
 
 const TarjetaEstadisticaPerfil = ({ icono, nombreEstadistica, valorEstadistica }) => {
