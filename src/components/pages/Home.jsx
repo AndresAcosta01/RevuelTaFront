@@ -2,6 +2,8 @@ import Hero from "./Home/Hero/Hero";
 import heroImg from "../../assets/landing_img.jpeg";
 import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacadas";
 import Estadisticas from "./Home/Estadisticas/Estadisticas";
+import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados";
+
 function Home() {
     const handleExplorarCatalogo = () => {
         console.log("Ir a catálogo con categoría Todas");
@@ -11,6 +13,20 @@ function Home() {
         console.log("Filtrar catálogo por categoría:", nombreCategoria);
     };
 
+    const handleVerProducto = (idProducto) => {
+        
+        console.log("Abrir modal de producto:", idProducto);
+    };
+
+    const handleAgregarCarrito = (idProducto) => {
+        
+        console.log("Agregar al carrito / abrir modal:", idProducto);
+    };
+
+    const handleTrueque = (idProducto) => {
+        
+        console.log("Iniciar trueque:", idProducto);
+    };
 
     return (
         <main>
@@ -22,6 +38,11 @@ function Home() {
             />
             <Estadisticas />
             <CategoriasDestacadas onSeleccionarCategoria={handleSeleccionarCategoria} />
+            <ProductosDestacados
+                onVerProducto={handleVerProducto}
+                onAgregarCarrito={handleAgregarCarrito}
+                onTrueque={handleTrueque}
+            />
         </main>
     );
 }
