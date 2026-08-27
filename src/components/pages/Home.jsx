@@ -4,6 +4,7 @@ import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacad
 import Estadisticas from "./Home/Estadisticas/Estadisticas";
 import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados";
 import ComoFunciona from "./Home/ComoFunciona/ComoFunciona";
+import MarcasDestacadas from "./Home/MarcasDestacadas/MarcasDestacadas";
 
 function Home() {
     const handleExplorarCatalogo = () => {
@@ -45,6 +46,7 @@ function Home() {
                 onTrueque={handleTrueque}
             />
             < ComoFunciona />
+            < MarcasDestacadas />
         </main>
     );
 }
