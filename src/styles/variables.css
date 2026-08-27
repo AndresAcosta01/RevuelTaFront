@@ -11,4 +11,16 @@
     --color-paper: #f6f2e9;
     --color-paper-2: #efe9dc;
     --color-line: #ded6c5;
+
+    --text: var(--color-ink);
+    --text-h: var(--color-ink);
+    --bg: var(--color-paper);
+    --border: var(--color-line);
+    --accent: var(--color-pine);
+    --accent-bg: rgba(31, 94, 74, 0.1);
+    --accent-border: rgba(31, 94, 74, 0.45);
+    --social-bg: rgba(239, 233, 220, 0.6);
+    --shadow:
+        rgba(21, 32, 27, 0.08) 0 10px 15px -3px,
+        rgba(21, 32, 27, 0.05) 0 4px 6px -2px;
 }

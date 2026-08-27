@@ -1,0 +1,8 @@
+.detalleProducto {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.detalleProducto a {
+  color: var(--accent);
+}

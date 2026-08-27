@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MainLayout from "../layouts/MainLayout"
 import { RUTAS } from "../constants/rutas"
 import AuthLayout from "../layouts/AuthLayout"
+import Catalogo from "../pages/catalogo/Catalogo"
+import DetalleProducto from "../pages/producto/DetalleProducto"
 
 const AppRouter = () => {
     return (
@@ -15,7 +17,8 @@ const AppRouter = () => {
                     <Route path={RUTAS.CAMPANAS_DESCUENTOS} element={null}/>
                     <Route path={RUTAS.CARRITO} element={null}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={null}/>
-                    <Route path={RUTAS.CATALOGO} element={null}/>
+                    <Route path={RUTAS.CATALOGO} element={<Catalogo />}/>
+                    <Route path={RUTAS.DETALLE_PRODUCTO} element={<DetalleProducto />}/>
                 </Route>
                 <Route element={<AuthLayout />}>
                     <Route path={RUTAS.REGISTRO} element={null}/>
