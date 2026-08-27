@@ -1,24 +1,150 @@
 import ListadoPedidos from './ListadoPedidos'
-import pedidos from '../data/pedidos'
+import pedidos from '../data/pedidos.js'
 import { useState } from 'react'
 import ControlesPedidos from './ControlesPedidos';
-import "./MisPedidos.css";
+import styles from "./MisPedidos.module.css";
 
 const MisPedidos = () => {
 
-    const [estadoSeleccionado, setEstadoSeleccionado] = useState("Todos");
+  const [estadoSeleccionado, setEstadoSeleccionado] = useState("Todos");
 
-    const pedidosFiltrados = estadoSeleccionado === "Todos" ? pedidos : pedidos.filter((pedido) => pedido.estado === estadoSeleccionado);
+  const [busqueda, setBusqueda] = useState("");
+
+  const [ordenSeleccionado, setOrdenSeleccionado] = useState("Recientes");
+
+  const [filtroFecha, setFiltroFecha] = useState("Todos");
+
+  const [fechaDesde, setFechaDesde] = useState("");
+  const [fechaHasta, setFechaHasta] = useState("");
+
+  const verificarFecha = (pedido) => {
+
+    if (filtroFecha === "Todos") {
+      return true;
+    }
+
+    const fechaPedido = new Date(pedido.fecha + "T00:00:00");
+    const hoy = new Date();
+
+    if (filtroFecha === "Hoy") {
+      return (
+        fechaPedido.getDate() === hoy.getDate() &&
+        fechaPedido.getMonth() === hoy.getMonth() &&
+        fechaPedido.getFullYear() === hoy.getFullYear()
+      );
+    }
+
+    if (filtroFecha === "Semana") {
+      const haceUnaSemana = new Date();
+      haceUnaSemana.setDate(hoy.getDate() - 7);
+
+      return fechaPedido >= haceUnaSemana;
+    }
+
+    if (filtroFecha === "Mes") {
+      const haceUnMes = new Date();
+      haceUnMes.setMonth(hoy.getMonth() - 1);
+
+      return fechaPedido >= haceUnMes;
+    }
+
+    if (filtroFecha === "Personalizado") {
+
+      if (!fechaDesde || !fechaHasta) {
+        return true;
+      }
+
+      const desde = new Date(fechaDesde + "T00:00:00");
+      const hasta = new Date(fechaHasta + "T23:59:59");
+      
+      return fechaPedido >= desde && fechaPedido <= hasta;
+    }
+
+    return true;
+  };
+
+  const pedidosFiltrados = pedidos.filter((pedido) => {
+    const coincideEstado = estadoSeleccionado === "Todos" || pedido.estado === estadoSeleccionado;
+
+    const coincideBusqueda = pedido.id.toLowerCase().includes(busqueda.toLowerCase()) || pedido.prendas.some((prenda) =>
+      prenda.nombre.toLowerCase().includes(busqueda.toLowerCase())
+    );
+
+    const coincideFecha = verificarFecha(pedido);
+
+    return coincideEstado && coincideBusqueda && coincideFecha;
+  });
+
+  const pedidosOrdenados = [...pedidosFiltrados].sort((a, b) => {
+    const fechaA = new Date(a.fecha);
+    const fechaB = new Date(b.fecha);
+
+    if (ordenSeleccionado === "Recientes") {
+      return fechaB - fechaA;
+    }
+    return fechaA - fechaB;
+  })
+
+  const coincideFecha = (pedido) => {
+
+    if (filtroFecha === "Todos") {
+      return true;
+    }
+
+    const fechaPedido = new Date(pedido.fecha);
+    const hoy = new Date();
+
+    if (filtroFecha === "Hoy") {
+
+      return (
+        fechaPedido.getDate() === hoy.getDate() &&
+        fechaPedido.getMonth() === hoy.getMonth() &&
+        fechaPedido.getFullYear() === hoy.getFullYear()
+      );
+    }
+
+    if (filtroFecha === "semana") {
+
+      const haceUnaSemana = new Date();
+      haceUnaSemana.setDate(hoy.getDate() - 7);
+
+      return fechaPedido >= haceUnaSemana;
+    }
+
+    if (filtroFecha === "mes") {
+
+      const haceUnMes = new Date();
+      haceUnMes.setMonth(hoy.getMonth() - 1);
+
+      return fechaPedido >= haceUnMes;
+    }
+
+    return true;
+  };
 
   return (
-    <main className='mis-pedidos'>
-      <section className='mis-pedidos-contenido'>
+    <main className={styles.misPedidos}>
+      <section className={styles.misPedidosContenido}>
         <h1>Mis pedidos</h1>
 
-        <ControlesPedidos estadoSeleccionado = {estadoSeleccionado} setEstadoSeleccionado = {setEstadoSeleccionado} />
-        
-        <ListadoPedidos pedidos={pedidosFiltrados} />
-        </section>
+        <ControlesPedidos
+          estadoSeleccionado={estadoSeleccionado}
+          setEstadoSeleccionado={setEstadoSeleccionado}
+          busqueda={busqueda}
+          setBusqueda={setBusqueda}
+          ordenSeleccionado={ordenSeleccionado}
+          setOrdenSeleccionado={setOrdenSeleccionado}
+          filtroFecha={filtroFecha}
+          setFiltroFecha={setFiltroFecha}
+          fechaDesde={fechaDesde}
+          setFechaDesde={setFechaDesde}
+          fechaHasta={fechaHasta}
+          setFechaHasta={setFechaHasta}
+        />
+
+        {/*<ListadoPedidos pedidos={pedidosFiltrados} />*/}
+        <ListadoPedidos pedidos={pedidosOrdenados} />
+      </section>
     </main>
   )
 }

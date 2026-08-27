@@ -1,38 +1,61 @@
+import styles from "./MisPedidos.module.css";
+
 const ListadoPedidos = ({ pedidos }) => {
     return (
-        <div className="listado-pedidos">
+        <div className={styles.listadoPedidos}>
             {pedidos.map((pedido) => (
-                <div className="pedido-card" key={pedido.id}>
+                <div className={styles.pedidoCard} key={pedido.id}>
 
-                    <section className="pedido-header">
+                    <section className={styles.pedidoHeader}>
 
-                        <section className="pedido-info">
+                        <section className={styles.pedidoInfo}>
                             <h2>Pedido #{pedido.id}</h2>
-                            <p className="pedido-fecha">{pedido.fecha}</p>
+                            <p className={styles.pedidoFecha}>{pedido.fecha}</p>
                         </section>
 
-                        <span className="pedido-estado">{pedido.estado}</span>
+                        <span className={styles.pedidoEstado}>{pedido.estado}</span>
                     </section>
 
-                    {pedido.prendas.map((prenda) => (
+                    {pedido.tipoOperacion === "compra" && (
+                        <div className={styles.pedidoCompra}>
+                            {pedido.prendas.map((prenda) => (
 
-                        <div className="prenda" key={prenda.id}>
+                                <div className={styles.prenda} key={prenda.id}>
 
-                            <div className="prenda-info">
-                                <h3>{prenda.nombre}</h3>
-                                <p>1 prenda</p>
+                                    <div className={styles.prendaInfo}>
+                                        <h3>{prenda.nombre}</h3>
+                                        <p>1 prenda</p>
+                                    </div>
+
+                                    <span className={styles.prendaPrecio}>
+                                        ${prenda.precio.toLocaleString("es-CO")}
+                                    </span>
+
+                                </div>
+
+                            ))}
+                        </div>
+                    )}
+
+                    {pedido.tipoOperacion === "trueque" && (
+                        <div className={styles.pedidoTrueque}>
+                            <div className={styles.prenda}>
+                                <section className={styles.prendaInfo}><h3>{pedido.prendas[0].nombre}</h3></section>
                             </div>
 
-                            <span className="prenda-precio">
-                                ${prenda.precio.toLocaleString("es-CO")}
-                            </span>
+                            <div className={styles.truequeIdentificador}>↕</div>
+
+                            <div className={styles.prenda}>
+                                <section className={styles.prendaInfo}><h3>{pedido.prendas[1].nombre}</h3></section>
+                            </div>
+
+                            <div className={styles.saldoTrueque}>Saldo: ${pedido.saldoTrueque.toLocaleString("es-CO")}</div>
 
                         </div>
+                    )}
 
-                    ))}
 
-
-                    <section className="pedido-acciones">
+                    <section className={styles.pedidoAcciones}>
                         {pedido.estado === "En preparación" && (
                             <>
                                 <button>Rastrear envío</button>
