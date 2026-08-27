@@ -1,8 +1,8 @@
 import './App.css'
-import InformacionProducto from './components/InformacionProducto'
-import PaginaDetalleProducto from './components/PaginaDetalleProducto'
-import ProductosRelacionados from './components/ProductosRelacionados'
-import SeccionesProducto from './components/SeccionesProducto'
+import InformacionProducto from './components/pages/catalogo/InformacionProducto'
+import PaginaDetalleProducto from './pages/PaginaDetalleProducto'
+import ProductosRelacionados from './components/pages/catalogo/ProductosRelacionados'
+import SeccionesProducto from './components/pages/catalogo/SeccionesProducto'
 
 function App() {
   return (
