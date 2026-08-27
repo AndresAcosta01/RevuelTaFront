@@ -1,8 +1,8 @@
-import ListadoPedidos from './ListadoPedidos.jsx'
-import pedidos from '../../../data/pedidos.js'
+import ListadoPedidos from '../../components/pages/Pedidos/ListadoPedidos.jsx'
+import pedidos from '../../data/pedidos.js'
 import { useState } from 'react'
-import ControlesPedidos from './ControlesPedidos.jsx';
-import styles from "./MisPedidos.module.css";
+import ControlesPedidos from '../../components/pages/Pedidos/ControlesPedidos.jsx';
+import styles from "../../components/pages/Pedidos/MisPedidos.module.css";
 
 const MisPedidos = () => {
 

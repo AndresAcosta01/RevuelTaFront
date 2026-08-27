@@ -1,14 +1,9 @@
-import { useState } from 'react'
 import './App.css'
-import MisPedidos from './components/pages/Pedidos/MisPedidos'
+import AppRouter from './router/AppRouter'
 
 function App() {
 
-  return (
-    <>
-      <MisPedidos />
-    </>
-  )
+  return <AppRouter />
 }
 
 export default App
