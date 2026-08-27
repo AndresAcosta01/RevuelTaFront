@@ -1,0 +1,113 @@
+.contenidoSeguimiento{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: var(--font-body);
+    border: 1px solid var(--color-line);
+    border-radius: 5px;
+    margin: 2.5rem 5.5rem;
+    padding: 6rem 3rem;
+    position: relative;
+    background-color: white;
+}
+
+.tarjetaPuntoAcopio{
+    display: flex;
+    flex-direction: column;
+}
+
+.datosEnvio{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid var(--color-line);
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.textoDatosEnvio{
+    margin: 0.5rem 0 0 0;
+}
+
+.etiquetaDatoEnvio{
+    font-weight: 700;
+    font-size: 1.05rem;
+}
+
+.etiquetaDatoEnvio:not(:first-child){
+    margin: 1rem 0 0 0;
+}
+
+.estadoSeguimiento {
+    position: relative;
+    padding-left: 30px;
+}
+
+.estadoSeguimiento::before {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color-line);
+    border-radius: 50%;
+    left: 0;
+    top: 5px;
+    z-index: 10;
+}
+
+.estadoSeguimiento:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    background-color: var(--color-line);
+    left: 7px;
+    top: 19px;
+    bottom: -5px;
+}
+
+.estadoSeguimiento:not(:last-child) {
+    padding-bottom: 16px;
+}
+
+.estadoCompletado::before {
+    background-color: var(--color-pine);
+    border-color: var(--color-pine);
+}
+
+.estadoSeguimiento.estadoCompletado::after {
+    background-color: var(--color-pine);
+}
+
+.estadoActual::before {
+    background-color: var(--color-marigold);
+    border-color: var(--color-marigold);
+    animation: pulsoEstadoActual 1.8s ease-in-out infinite;
+}
+
+@keyframes pulsoEstadoActual {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(242, 160, 61, 0);
+    }
+
+    50% {
+        box-shadow: 0 0 0 6px rgba(242, 160, 61, 0.25);
+    }
+}
+
+.nombreEstado {
+    margin: 0;
+}
+
+.detalleEstado {
+    font-size: 0.9rem;
+}
+
+.etiquetaEntrega{
+    display: inline-block;
+    border: 2px solid var(--color-line);
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    position: absolute;
+    top: 2.5rem;
+}

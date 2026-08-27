@@ -1,7 +1,10 @@
+import SeguimientoEnvio from "./pages/SeguimientoEnvio/SeguimientoEnvio"
+
 function App() {
 
   return (
     <>
+    <SeguimientoEnvio />
     </>
   )
 }
