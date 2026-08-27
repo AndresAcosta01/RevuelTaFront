@@ -1,0 +1,142 @@
+.contenedorPrincipal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 160px);
+  padding: 2rem 1rem;
+  background-color: var(--color-background-main, #f8f9fa);
+  font-family: var(--font-family-base, 'Plus Jakarta Sans', sans-serif);
+}
+
+.tarjetaFormulario {
+  width: 100%;
+  max-width: 480px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+}
+
+.titulo {
+  font-family: var(--font-family-heading, 'Fraunces', serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #111827;
+  text-align: center;
+  margin: 0 0 0.75rem 0;
+}
+
+.descripcion {
+  font-size: 0.95rem;
+  color: #4b5563;
+  text-align: center;
+  line-height: 1.5;
+  margin: 0 0 2rem 0;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.grupoCampo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.etiquetaCampo {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.campoTexto {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.campoTexto:focus {
+  border-color: #111827;
+  box-shadow: 0 0 0 2px rgba(17, 24, 39, 0.1);
+}
+
+.campoConError {
+  border-color: #dc2626;
+}
+
+.mensajeError {
+  font-size: 0.825rem;
+  color: #dc2626;
+  margin-top: 0.25rem;
+}
+
+.botonEnviar {
+  width: 100%;
+  padding: 0.85rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #111827;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 0.5rem;
+}
+
+.botonEnviar:hover:not(:disabled) {
+  background-color: #374151;
+}
+
+.botonEnviar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.mensajeConfirmacion {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  background-color: #f3f4f6;
+  border-left: 4px solid #111827;
+  padding: 0.875rem 1rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.4;
+  margin-top: 0.5rem;
+}
+
+.iconoInformativo {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.botonVolverInicioSesion {
+  display: block;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4b5563;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  transition: color 0.2s;
+}
+
+.botonVolverInicioSesion:hover {
+  color: #111827;
+  text-decoration: underline;
+}

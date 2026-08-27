@@ -1,11 +1,9 @@
-import DescuentosCampanas from './pages/mercadeo/DescuentosCampanas'
+import './App.css'
+import AppRouter from './router/AppRouter'
 
 function App() {
-  return (
-    <div className="container-fluid p-0">
-      <DescuentosCampanas />
-    </div>
-  )
+
+  return <AppRouter />
 }
 
 export default App

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import MisPuntosDisponibles from '../../components/mercadeo/MisPuntosDisponibles/MisPuntosDisponibles';
 import ComoFunciona from '../../components/mercadeo/ComoFunciona/ComoFunciona';
@@ -15,6 +16,7 @@ import VentanaModalCampanas from '../../components/mercadeo/modales/VentanaModal
 import { puntosUsuario as puntosUsuarioMock } from '../../data/puntosMock';
 import { nivelesPrograma } from '../../data/nivelesMock';
 import { ofertaDestacada } from '../../data/ofertaDestacadaMock';
+import { RUTAS } from '../../constants/rutas';
 
 
 const DescuentosCampanas = () => {
@@ -59,13 +61,29 @@ const DescuentosCampanas = () => {
     <div className="container py-4" style={{ fontFamily: 'var(--font-body)' }}>
       {
 }
-      <div className="mb-4">
-        <h1 className="fw-bold mb-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>
-          Descuentos y campañas
-        </h1>
-        <p className="text-muted mb-0">
-          Usa tus puntos, accede a descuentos exclusivos y participa en campañas especiales
-        </p>
+      <div className="mb-4 d-flex justify-content-between align-items-end gap-3 flex-wrap">
+        <div>
+          <h1 className="fw-bold mb-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>
+            Descuentos y campañas
+          </h1>
+          <p className="text-muted mb-0">
+            Usa tus puntos, accede a descuentos exclusivos y participa en campañas especiales
+          </p>
+        </div>
+
+        <Link
+          to={RUTAS.RECUPERAR_CONTRASENA}
+          className="btn btn-sm rounded-pill px-3 fw-semibold"
+          style={{
+            border: '1px solid var(--color-pine)',
+            backgroundColor: 'white',
+            color: 'var(--color-pine)',
+            fontFamily: 'var(--font-body)',
+            boxShadow: 'none',
+          }}
+        >
+          Recuperar contraseña
+        </Link>
       </div>
 
       <div className="row g-4">
