@@ -3,6 +3,7 @@ import heroImg from "../../assets/landing_img.jpeg";
 import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacadas";
 import Estadisticas from "./Home/Estadisticas/Estadisticas";
 import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados";
+import ComoFunciona from "./Home/ComoFunciona/ComoFunciona";
 
 function Home() {
     const handleExplorarCatalogo = () => {
@@ -43,6 +44,7 @@ function Home() {
                 onAgregarCarrito={handleAgregarCarrito}
                 onTrueque={handleTrueque}
             />
+            < ComoFunciona />
         </main>
     );
 }
