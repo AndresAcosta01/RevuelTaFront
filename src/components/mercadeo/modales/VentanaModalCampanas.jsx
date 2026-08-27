@@ -5,20 +5,13 @@ import ListadoCampanas from './campanas/ListadoCampanas';
 
 const ITEMS_POR_PAGINA = 4;
 
-/**
- * MER-DC04 · Ventana Modal Campañas
- *
- * Contenedor principal: mantiene el estado compartido (estadoSeleccionado,
- * paginaActual) e inicializa la vista en "Activas". Se abre desde
- * "Ver todas" en Campañas activas, sin modificar la URL.
- */
 const VentanaModalCampanas = ({ onCerrar }) => {
   const [estadoSeleccionado, setEstadoSeleccionado] = useState('Activas');
   const [paginaActual, setPaginaActual] = useState(1);
 
   const handleCambiarEstado = (nuevoEstado) => {
     setEstadoSeleccionado(nuevoEstado);
-    setPaginaActual(1); // evita inconsistencias de paginación al cambiar de estado
+    setPaginaActual(1);
   };
 
   const estadoFiltro = estadoSeleccionado === 'Activas' ? 'Activa' : 'Finalizada';
