@@ -5,6 +5,7 @@ import Estadisticas from "./Home/Estadisticas/Estadisticas";
 import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados";
 import ComoFunciona from "./Home/ComoFunciona/ComoFunciona";
 import MarcasDestacadas from "./Home/MarcasDestacadas/MarcasDestacadas";
+import Testimonios from "./Home/Testimonios/Testimonios";
 
 function Home() {
     const handleExplorarCatalogo = () => {
@@ -47,6 +48,7 @@ function Home() {
             />
             < ComoFunciona />
             < MarcasDestacadas />
+            < Testimonios />
         </main>
     );
 }

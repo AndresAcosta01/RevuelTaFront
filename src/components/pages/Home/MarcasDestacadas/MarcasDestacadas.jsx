@@ -12,7 +12,6 @@ function MarcasDestacadas() {
                     {marcas.map((marca) => (
                         <LogoMarca key={marca.id} nombre={marca.nombre} logo={marca.logo} />
                     ))}
-                    {/* Copia idéntica para que el scroll se vea infinito y sin cortes */}
                     {marcas.map((marca) => (
                         <LogoMarca key={`duplicado-${marca.id}`} nombre={marca.nombre} logo={marca.logo} />
                     ))}
