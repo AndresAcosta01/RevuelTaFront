@@ -1,12 +1,9 @@
-import SeguimientoEnvio from "./pages/SeguimientoEnvio/SeguimientoEnvio"
+import './App.css'
+import AppRouter from './router/AppRouter'
 
 function App() {
 
-  return (
-    <>
-    <SeguimientoEnvio />
-    </>
-  )
+  return <AppRouter />
 }
 
 export default App
