@@ -85,43 +85,6 @@ const MisPedidos = () => {
     return fechaA - fechaB;
   })
 
-  const coincideFecha = (pedido) => {
-
-    if (filtroFecha === "Todos") {
-      return true;
-    }
-
-    const fechaPedido = new Date(pedido.fecha);
-    const hoy = new Date();
-
-    if (filtroFecha === "Hoy") {
-
-      return (
-        fechaPedido.getDate() === hoy.getDate() &&
-        fechaPedido.getMonth() === hoy.getMonth() &&
-        fechaPedido.getFullYear() === hoy.getFullYear()
-      );
-    }
-
-    if (filtroFecha === "semana") {
-
-      const haceUnaSemana = new Date();
-      haceUnaSemana.setDate(hoy.getDate() - 7);
-
-      return fechaPedido >= haceUnaSemana;
-    }
-
-    if (filtroFecha === "mes") {
-
-      const haceUnMes = new Date();
-      haceUnMes.setMonth(hoy.getMonth() - 1);
-
-      return fechaPedido >= haceUnMes;
-    }
-
-    return true;
-  };
-
   return (
     <main className={styles.misPedidos}>
       <section className={styles.misPedidosContenido}>

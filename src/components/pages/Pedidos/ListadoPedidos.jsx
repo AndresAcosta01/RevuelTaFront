@@ -24,7 +24,7 @@ const ListadoPedidos = ({ pedidos }) => {
 
                                     <div className={styles.prendaInfo}>
                                         <h3>{prenda.nombre}</h3>
-                                        <p>1 prenda</p>
+                                        <p>{pedido.prendas.length} {pedido.prendas.length === 1 ? "prenda" : "prendas"}</p>
                                     </div>
 
                                     <span className={styles.prendaPrecio}>
@@ -43,7 +43,7 @@ const ListadoPedidos = ({ pedidos }) => {
                                 <section className={styles.prendaInfo}><h3>{pedido.prendas[0].nombre}</h3></section>
                             </div>
 
-                            <div className={styles.truequeIdentificador}>↕</div>
+                            <div className={styles.truequeIndicador}>↕</div>
 
                             <div className={styles.prenda}>
                                 <section className={styles.prendaInfo}><h3>{pedido.prendas[1].nombre}</h3></section>

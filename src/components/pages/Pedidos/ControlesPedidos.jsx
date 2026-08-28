@@ -10,7 +10,7 @@ const ControlesPedidos = ({ estadoSeleccionado, setEstadoSeleccionado, busqueda,
         <button
           key={estado.value}
           onClick={() => setEstadoSeleccionado(estado.value)}
-          className={estadoSeleccionado === estado.value ? styles.activo : ""}>
+          className={estadoSeleccionado === estado.value ? styles.activo : styles.inactivo}>
           {estado.label}
         </button>
       ))}
@@ -65,8 +65,6 @@ const ControlesPedidos = ({ estadoSeleccionado, setEstadoSeleccionado, busqueda,
 
         </section>
       )}
-
-
 
 
 
