@@ -3,7 +3,7 @@ import styles from "./PanelPerfil.module.css"
 import opcionesMenuPerfil from "../OpcionMenuPerfil/opcionesMenuPerfil"
 import OpcionMenuPerfil from "../OpcionMenuPerfil/OpcionMenuPerfil"
 
-const PanelPerfil = (cerrarPanelActivo) => {
+const PanelPerfil = ({ cerrarPanelActivo, cerrarSesion }) => {
     return (
         <div className={styles.menuPerfil}>
             <div className={styles.datosPerfil}>
@@ -11,10 +11,17 @@ const PanelPerfil = (cerrarPanelActivo) => {
                     <div className={styles.contenedorFotoPerfil}>
                         <UserRound />
                     </div>
-                    <p className={styles.nombreUsuario}>Nombre Usuario</p>
+
+                    <p className={styles.nombreUsuario}>
+                        Nombre Usuario
+                    </p>
                 </div>
-                <span className={styles.puntosUsuario}>0 pts</span>
+
+                <span className={styles.puntosUsuario}>
+                    0 pts
+                </span>
             </div>
+
             {opcionesMenuPerfil.map((opcion) => (
                 <OpcionMenuPerfil
                     key={opcion.id}
@@ -24,10 +31,12 @@ const PanelPerfil = (cerrarPanelActivo) => {
                     onClick={cerrarPanelActivo}
                 />
             ))}
+
             <div className={styles.contenedorCerrarSesion}>
                 <OpcionMenuPerfil
                     Icono={LogOut}
-                    texto={"Cerrar Sesión"}
+                    texto="Cerrar Sesión"
+                    onClick={cerrarSesion}
                 />
             </div>
         </div>
