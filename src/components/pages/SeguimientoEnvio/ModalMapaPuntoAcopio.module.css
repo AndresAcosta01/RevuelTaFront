@@ -1,0 +1,246 @@
+.botonAbrirMapaModal {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+
+    width: 29px;
+    height: 29px;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 6px 2px rgba(230, 90, 90, 0.08);
+    cursor: pointer;
+    outline: none;
+}
+
+.botonAbrirMapaModal svg {
+    width: 20px;
+    height: 20px;
+    color: #333;
+    stroke-width: 2;
+}
+
+.botonAbrirMapaModal:hover {
+    background-color: #f2f2f2;
+}
+
+.botonAbrirMapaModal:hover svg {
+    color: var(--color-pine);
+}
+
+.modalMapa {
+    position: fixed;
+    top: 66px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.contenidoModalMapa {
+    width: 80%;
+    height: 80%;
+    padding: 1.25rem;
+
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 1rem;
+
+    box-sizing: border-box;
+    background-color: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 8px;
+}
+
+.encabezadoModalMapa {
+    height: 60px;
+    padding: 0 1rem 0 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.encabezadoModalMapa h2 {
+    margin: 0;
+}
+
+.botonCerrarModal {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: transparent;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.botonCerrarModal:hover {
+    background-color: var(--color-paper-2);
+}
+
+.contenedorMapaModal {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.mapaModal {
+    width: 100%;
+    height: 100%;
+}
+
+.botonCerrarMapaModal {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 2;
+
+    width: 29px;
+    height: 29px;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 6px 2px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    outline: none;
+}
+
+.botonCerrarMapaModal:hover {
+    background-color: #f2f2f2;
+}
+
+.botonCerrarMapaModal svg,
+.botonVolverPuntoModal svg {
+    width: 20px;
+    height: 20px;
+    color: #333;
+    stroke-width: 2;
+}
+
+.botonCerrarMapaModal:hover svg {
+    color: var(--color-pine);
+}
+
+.botonVolverPuntoModal {
+    position: absolute;
+    top: 2.7rem;
+    left: 0.5rem;
+    z-index: 2;
+
+    width: 29px;
+    height: 29px;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #fff;
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 0 6px 2px rgb(0 0 0 / 8%);
+    cursor: pointer;
+    outline: none;
+}
+
+.botonVolverPuntoModal:hover {
+    background-color: #f2f2f2;
+}
+
+.botonVolverPuntoModal svg {
+    color: #333;
+}
+
+.botonVolverPuntoModal:hover svg {
+    color: var(--color-pine);
+}
+
+:global(.maplibregl-ctrl-group button:hover .maplibregl-ctrl-icon) {
+    filter: invert(31%) sepia(17%) saturate(1396%) hue-rotate(108deg) brightness(86%) contrast(89%);
+}
+
+.panelRuta {
+    position: absolute;
+    top: 0.5rem;
+    left: 4rem;
+    z-index: 3;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+}
+
+.contenidoPanelRuta {
+    width: 360px;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 15%);
+}
+
+.contenidoPanelRutaOculto {
+    display: none;
+}
+
+.botonAlternarPanel {
+    width: 32px;
+    height: 36px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    background-color: #fff;
+    border: 0;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+
+    cursor: pointer;
+}
+
+.botonAlternarPanel svg {
+    width: 18px;
+    height: 18px;
+
+    color: #333;
+}
+
+.botonAlternarPanel:hover svg {
+    color: var(--color-pine);
+}
+
+.errorRuta {
+    display: block;
+    margin-top: 0.5rem;
+
+    font-size: 0.78rem;
+
+    color: var(--color-clay);
+}

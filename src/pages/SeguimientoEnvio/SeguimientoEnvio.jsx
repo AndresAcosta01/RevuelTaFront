@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import styles from "./SeguimientoEnvio.module.css"
 import { obtenerSeguimientoEnvio } from "../../services/seguimientoEnvioServicio";
-import { BsArrowLeftRight } from "react-icons/bs";
 import { ArrowLeftRight } from "lucide-react";
 import BloqueSeguimientoEntrega from "../../components/pages/SeguimientoEnvio/BloqueSeguimientoEntrega";
 

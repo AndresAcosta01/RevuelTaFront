@@ -8,5 +8,6 @@ export const RUTAS = {
     CATALOGO: "/catalogo",
     PUBLICAR_PRENDA: "/publicar-prenda",
     REGISTRO: "/registro",
-    INICIAR_SESION: "/iniciar-sesion"
+    INICIAR_SESION: "/iniciar-sesion",
+    SEGUIMIENTO_ENVIO: "/seguimiento-envio"
 }

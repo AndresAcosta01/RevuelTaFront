@@ -1,6 +1,8 @@
 import styles from "./BloqueSeguimientoEntrega.module.css"
+import MapaPuntoAcopio from "./MapaPuntoAcopio"
 
 const BloqueSeguimientoEntrega = ({ entrega }) => {
+    const puntoVisible = entrega.tipoEntrega === "propia" ? entrega.puntoOrigen : entrega.puntoDestino
     const obtenerClaseEstado = (situacion) => {
         if (situacion === "completado") return styles.estadoCompletado;
         if (situacion === "actual") return styles.estadoActual;
@@ -45,9 +47,13 @@ const BloqueSeguimientoEntrega = ({ entrega }) => {
                 <section className={styles.seccionPuntoAcopio}>
                     <h3>{entrega.tipoEntrega === "propia" ? "Punto de entrega" : "Punto de recogida"}</h3>
                     <div className={styles.tarjetaPuntoAcopio}>
-                        <p>{entrega.puntoOrigen.nombre}</p>
-                        <span>{entrega.puntoOrigen.direccion}</span>
-                        <span>{entrega.puntoOrigen.horario}</span>
+                        <MapaPuntoAcopio
+                            latitud={puntoVisible.latitud}
+                            longitud={puntoVisible.longitud}
+                            nombrePunto={puntoVisible.nombre} />
+                        <p>{puntoVisible.nombre}</p>
+                        <span>{puntoVisible.direccion}</span>
+                        <span>{puntoVisible.horario}</span>
                     </div>
                     <h3>Datos de envío</h3>
                     <div className={styles.datosEnvio}>

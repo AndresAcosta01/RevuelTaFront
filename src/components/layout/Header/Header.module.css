@@ -8,4 +8,5 @@
     padding: 0.7rem 3rem;
     background-color: white;
     border-bottom: 2px solid var(--color-line);
+    z-index: 9999;
 }
