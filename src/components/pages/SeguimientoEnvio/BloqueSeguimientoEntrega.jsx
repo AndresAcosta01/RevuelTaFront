@@ -21,9 +21,12 @@ const BloqueSeguimientoEntrega = ({ entrega }) => {
     }
     return (
         <div className={styles.bloqueSeguimiento}>
-            <div className={styles.contenidoSeguimiento}>
+            <div
+                className={`${styles.contenidoSeguimiento} ${entrega.tipoEntrega === "recibida" ? styles.contenidoInvertido : ""
+                    }`}>
+                <span className={styles.etiquetaEntrega}>{entrega.etiqueta}</span>
+
                 <section className={styles.seccionEstados}>
-                    <span className={styles.etiquetaEntrega}>{entrega.etiqueta}</span>
                     <h2 className={styles.nombrePrenda}>{entrega.prenda.nombre}</h2>
 
                     <div className={styles.listaEstados}>
@@ -51,9 +54,12 @@ const BloqueSeguimientoEntrega = ({ entrega }) => {
                             latitud={puntoVisible.latitud}
                             longitud={puntoVisible.longitud}
                             nombrePunto={puntoVisible.nombre} />
-                        <p>{puntoVisible.nombre}</p>
-                        <span>{puntoVisible.direccion}</span>
-                        <span>{puntoVisible.horario}</span>
+                        <div className={styles.datosPuntoAcopio}>
+                            <p>{puntoVisible.nombre}</p>
+                            <span>{puntoVisible.direccion}</span>
+                            <span className={styles.textoHorario}>Horario de atención: </span>
+                            <span>Lunes a Viernes de: {puntoVisible.horario}</span>
+                        </div>
                     </div>
                     <h3>Datos de envío</h3>
                     <div className={styles.datosEnvio}>

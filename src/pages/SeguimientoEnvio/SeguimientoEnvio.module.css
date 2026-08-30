@@ -12,8 +12,39 @@
 .referenciaPedido span{
     font-weight: 700;
 }
+
+.contenedorEncabezado{
+    margin: 2rem 0 0 5.5rem;
+}
+
 .tituloSeguimientoEnvio{
     font-family: var(--font-heading);
     font-size: 2.2rem;
     margin: 0;
+}
+
+.botonCambiarPunto {
+    margin: 0 auto 2.5rem;
+    padding: 0.7rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    background-color: white;
+    color: var(--color-ink);
+    border: 1px solid var(--color-line);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.botonCambiarPunto svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke-width: 3px;
+}
+
+.botonCambiarPunto:hover {
+    background-color: var(--color-paper-2);
 }
