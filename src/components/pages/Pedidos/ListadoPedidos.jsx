@@ -1,6 +1,20 @@
 import styles from "./MisPedidos.module.css";
 
 const ListadoPedidos = ({ pedidos }) => {
+
+    const mostrarSaldoTrueque = (saldo) => {
+        const saldoNumerico = Number(saldo)
+
+        if (saldo > 0) {
+            return `Debes pagar: $${saldo.toLocaleString("es-CO")}`
+        }
+        if (saldo < 0) {
+            return `Recibes: $${Math.abs(saldo).toLocaleString("es-CO")}`
+        }
+
+        return "No debes pagar ni recibir dinero"
+    }
+
     return (
         <div className={styles.listadoPedidos}>
             {pedidos.map((pedido) => (
@@ -18,13 +32,14 @@ const ListadoPedidos = ({ pedidos }) => {
 
                     {pedido.tipoOperacion === "compra" && (
                         <div className={styles.pedidoCompra}>
+                            <p>{pedido.prendas.length} {pedido.prendas.length === 1 ? "prenda" : "prendas"}</p>
                             {pedido.prendas.map((prenda) => (
 
                                 <div className={styles.prenda} key={prenda.id}>
 
                                     <div className={styles.prendaInfo}>
                                         <h3>{prenda.nombre}</h3>
-                                        <p>{pedido.prendas.length} {pedido.prendas.length === 1 ? "prenda" : "prendas"}</p>
+                                        
                                     </div>
 
                                     <span className={styles.prendaPrecio}>
@@ -49,7 +64,7 @@ const ListadoPedidos = ({ pedidos }) => {
                                 <section className={styles.prendaInfo}><h3>{pedido.prendas[1].nombre}</h3></section>
                             </div>
 
-                            <div className={styles.saldoTrueque}>Saldo: ${pedido.saldoTrueque.toLocaleString("es-CO")}</div>
+                            <div className={styles.saldoTrueque}>{mostrarSaldoTrueque(pedido.saldoTrueque)}</div>
 
                         </div>
                     )}

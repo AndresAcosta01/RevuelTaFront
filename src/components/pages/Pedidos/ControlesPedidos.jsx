@@ -66,8 +66,6 @@ const ControlesPedidos = ({ estadoSeleccionado, setEstadoSeleccionado, busqueda,
         </section>
       )}
 
-
-
     </div>
   )
 }

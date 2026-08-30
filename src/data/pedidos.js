@@ -64,7 +64,7 @@ const pedidos = [
         estado: "Entregado",
         tipoOperacion: "trueque",
         tieneResena: true,
-        saldoTrueque: 20000,
+        saldoTrueque: 0,
         prendas: [
             {
                 id: 5,
