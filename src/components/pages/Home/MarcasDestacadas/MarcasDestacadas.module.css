@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     width: max-content;
-    animation: desplazamiento 25s linear infinite;
+    animation: desplazamiento 50s linear infinite;
     pointer-events: none; 
     user-select: none;
 }

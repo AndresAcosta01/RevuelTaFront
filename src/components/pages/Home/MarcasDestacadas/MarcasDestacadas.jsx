@@ -2,6 +2,8 @@ import marcas from "../../../../data/marcas";
 import LogoMarca from "./LogoMarca";
 import styles from "../MarcasDestacadas/MarcasDestacadas.module.css";
 
+const marcasRepetidas = [...marcas, ...marcas, ...marcas, ...marcas];
+
 function MarcasDestacadas() {
     return (
         <section className={styles.container}>
@@ -9,11 +11,11 @@ function MarcasDestacadas() {
 
             <div className={styles.carousel}>
                 <div className={styles.track}>
-                    {marcas.map((marca) => (
-                        <LogoMarca key={marca.id} nombre={marca.nombre} logo={marca.logo} />
+                    {marcasRepetidas.map((marca, index) => (
+                        <LogoMarca key={`${marca.id}-${index}`} nombre={marca.nombre} logo={marca.logo} />
                     ))}
-                    {marcas.map((marca) => (
-                        <LogoMarca key={`duplicado-${marca.id}`} nombre={marca.nombre} logo={marca.logo} />
+                    {marcasRepetidas.map((marca, index) => (
+                        <LogoMarca key={`duplicado-${marca.id}-${index}`} nombre={marca.nombre} logo={marca.logo} />
                     ))}
                 </div>
             </div>
