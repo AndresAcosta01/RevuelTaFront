@@ -1,5 +1,4 @@
 import Hero from "./Home/Hero/Hero";
-import heroImg from "../../assets/landing_img.jpeg";
 import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacadas";
 import Estadisticas from "./Home/Estadisticas/Estadisticas";
 import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados";
@@ -8,6 +7,7 @@ import MarcasDestacadas from "./Home/MarcasDestacadas/MarcasDestacadas";
 import Testimonios from "./Home/Testimonios/Testimonios";
 
 function Home() {
+    const heroImg = "https://res.cloudinary.com/ihe8jaok/image/upload/v1788192323/landing_img.jpg"
     const handleExplorarCatalogo = () => {
         console.log("Ir a catálogo con categoría Todas");
     };
