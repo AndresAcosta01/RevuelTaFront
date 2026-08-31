@@ -32,7 +32,7 @@ const pedidos = [
         fecha: "2026-08-20",
         estado: "Entregado",
         tipoOperacion: "compra",
-        tieneResena: false,
+        tieneResena: true,
         prendas: [
             {
                 id: 3,
@@ -64,7 +64,7 @@ const pedidos = [
         estado: "Entregado",
         tipoOperacion: "trueque",
         tieneResena: true,
-        saldoTrueque: 0,
+        saldoTrueque: -10000,
         prendas: [
             {
                 id: 5,
