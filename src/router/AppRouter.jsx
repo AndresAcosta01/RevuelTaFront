@@ -4,13 +4,14 @@ import { RUTAS } from "../constants/rutas"
 import AuthLayout from "../layouts/AuthLayout"
 import MisPedidos from "../pages/Pedidos/MisPedidos"
 import SeguimientoEnvio from "../pages/SeguimientoEnvio/SeguimientoEnvio"
+import Home from "../components/pages/Home"
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route element={<MainLayout />}>
-                    <Route path={RUTAS.LANDING_PAGE} element={null}/>
+                    <Route path={RUTAS.LANDING_PAGE} element={<Home />}/>
                     <Route path={RUTAS.PERFIL} element={null}/>
                     <Route path={RUTAS.PEDIDOS} element={<MisPedidos />}/>
                     <Route path={RUTAS.TRUEQUES} element={null}/>
