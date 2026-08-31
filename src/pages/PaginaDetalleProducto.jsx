@@ -4,6 +4,7 @@ import SeccionesProducto from '../components/pages/catalogo/SeccionesProducto';
 import ProductosRelacionados from '../components/pages/catalogo/ProductosRelacionados';
 import GaleriaProducto from '../components/pages/catalogo/GaleriaProducto';
 import { fetchProductById, fetchProducts } from '../services/productService';
+import styles from './DetalleProducto.module.css';
 
 const PaginaDetalleProducto = () => {
   const [producto, setProducto] = useState(null);
@@ -75,8 +76,8 @@ const PaginaDetalleProducto = () => {
   if (!producto) return <div>Producto no encontrado</div>;
 
   return (
-    <div className="detalle-producto-container">
-      <div className="detalle-grid">
+    <div className={styles.detalleProductoContainer}>
+      <div className={styles.detalleGrid}>
         <GaleriaProducto key={producto.id} imagenes={producto.imagenes} />
         <InformacionProducto
           producto={producto}

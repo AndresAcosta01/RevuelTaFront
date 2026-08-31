@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../../../pages/DetalleProducto.module.css';
 
 const InformacionProducto = ({ producto = {}, onAgregarCarrito, onProponerTrueque }) => {
   const tallasDisponibles = producto.tallas || [];
@@ -24,21 +25,21 @@ const InformacionProducto = ({ producto = {}, onAgregarCarrito, onProponerTruequ
   };
 
   return (
-    <div className="info-producto-container">
-      <span className="producto-marca">{producto.marca}</span>
-      <h1 className="producto-titulo">{producto.nombre}</h1>
-      <span className="producto-vendedor">👤 {producto.vendedor} {producto.calificacion} </span>
-      <span className="producto-precio">${producto.precio.toLocaleString()}</span>
+    <div className={styles.infoProductoContainer}>
+      <span className={styles.productoMarca}>{producto.marca}</span>
+      <h1 className={styles.productoTitulo}>{producto.nombre}</h1>
+      <span className={styles.productoVendedor}>👤 {producto.vendedor} {producto.calificacion} </span>
+      <span className={styles.productoPrecio}>${producto.precio.toLocaleString()}</span>
 
       {/* Selección de Talla */}
-      <div className="seccion-tallas">
+      <div className={styles.seccionTallas}>
         <label>TALLA</label>
-        <div className="tallas-grid">
+        <div className={styles.tallasGrid}>
           {producto.tallas.map((talla) => (
             <button
               key={talla.id}
               onClick={() => setTallaSeleccionada(talla)}
-              className={`talla-btn ${tallaSeleccionada?.id === talla.id ? 'seleccionada' : ''}`}
+              className={`${styles.tallaBtn} ${tallaSeleccionada?.id === talla.id ? styles.seleccionada : ''}`}
             >
               {talla.nombre}
             </button>
@@ -47,9 +48,9 @@ const InformacionProducto = ({ producto = {}, onAgregarCarrito, onProponerTruequ
       </div>
 
       {/* Control de Cantidad */}
-      <div className="seccion-cantidad">
+      <div className={styles.seccionCantidad}>
         <label>CANTIDAD</label>
-        <div className="control-cantidad">
+        <div className={styles.controlCantidad}>
           <button onClick={handleDecrementar} disabled={cantidad === 1}>-</button>
           <span>{cantidad}</span>
           <button onClick={handleIncrementar} disabled={cantidad >= producto.cantidadDisponible}>+</button>
@@ -57,10 +58,10 @@ const InformacionProducto = ({ producto = {}, onAgregarCarrito, onProponerTruequ
       </div>
 
       {/* Botones de Acción */}
-      <div className="acciones-container">
+      <div className={styles.accionesContainer}>
         <button 
           onClick={handleAgregarClick} 
-          className={`btn-carrito ${agregadoAlCarrito ? 'agregado' : ''}`}
+          className={`${styles.btnCarrito} ${agregadoAlCarrito ? styles.agregado : ''}`}
           disabled={agregadoAlCarrito}
         >
           {agregadoAlCarrito ? 'Añadido al carrito' : 'Añadir al carrito'}
@@ -71,7 +72,7 @@ const InformacionProducto = ({ producto = {}, onAgregarCarrito, onProponerTruequ
             onProponerTrueque();
             setEstadoTrueque(true);
           }} 
-          className="btn-trueque"
+          className={styles.btnTrueque}
         >
           {estadoTrueque ? 'Trueque propuesto' : 'Proponer Trueque'}
         </button>

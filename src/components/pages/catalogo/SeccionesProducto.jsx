@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from '../../../pages/DetalleProducto.module.css';
 
 const SeccionesProducto = ({ infoSecciones = {}, producto = {} }) => {
   const secciones = [
@@ -29,48 +30,48 @@ const SeccionesProducto = ({ infoSecciones = {}, producto = {} }) => {
   const detallesMap = parseDetalles(infoSecciones.detalles || '');
 
   return (
-    <div className="secciones-container">
-      <div className="tabs-header">
+    <div className={styles.seccionesContainer}>
+      <div className={styles.tabsHeader}>
         {secciones.map((seccion) => (
           <button
             key={seccion.id}
             onClick={() => setSeccionActiva(seccion.id)}
-            className={`tab-btn ${seccionActiva === seccion.id ? 'activa' : ''}`}
+            className={`${styles.tabBtn} ${seccionActiva === seccion.id ? styles.activa : ''}`}
           >
             {seccion.titulo}
           </button>
         ))}
       </div>
-      <div className="tab-content">
+      <div className={styles.tabContent}>
         {seccionActiva === 'descripcion' && (
           <div>
-            <p className="descripcion-text">{infoSecciones.descripcion}</p>
+            <p className={styles.descripcionText}>{infoSecciones.descripcion}</p>
           </div>
         )}
 
         {seccionActiva === 'detalles' && (
           <div>
-            <table className="detalles-table">
+            <table className={styles.detallesTable}>
               <tbody>
                 <tr>
-                  <td className="detalles-label">Estado</td>
-                  <td className="detalles-value">{detallesMap['Estado'] || ''}</td>
+                  <td className={styles.detallesLabel}>Estado</td>
+                  <td className={styles.detallesValue}>{detallesMap['Estado'] || ''}</td>
                 </tr>
                 <tr>
-                  <td className="detalles-label">Material</td>
-                  <td className="detalles-value">{detallesMap['Material'] || ''}</td>
+                  <td className={styles.detallesLabel}>Material</td>
+                  <td className={styles.detallesValue}>{detallesMap['Material'] || ''}</td>
                 </tr>
                 <tr>
-                  <td className="detalles-label">Medidas</td>
-                  <td className="detalles-value">{detallesMap['Medidas'] || ''}</td>
+                  <td className={styles.detallesLabel}>Medidas</td>
+                  <td className={styles.detallesValue}>{detallesMap['Medidas'] || ''}</td>
                 </tr>
                 <tr>
-                  <td className="detalles-label">Marca</td>
-                  <td className="detalles-value">{producto.marca || detallesMap['Marca'] || ''}</td>
+                  <td className={styles.detallesLabel}>Marca</td>
+                  <td className={styles.detallesValue}>{producto.marca || detallesMap['Marca'] || ''}</td>
                 </tr>
                 <tr>
-                  <td className="detalles-label">Publicado</td>
-                  <td className="detalles-value">{detallesMap['Publicado'] || ''}</td>
+                  <td className={styles.detallesLabel}>Publicado</td>
+                  <td className={styles.detallesValue}>{detallesMap['Publicado'] || ''}</td>
                 </tr>
               </tbody>
             </table>
