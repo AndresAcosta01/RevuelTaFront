@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import { RUTAS } from "../../constants/rutas"
 import Hero from "./Home/Hero/Hero";
 import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacadas";
 import Estadisticas from "./Home/Estadisticas/Estadisticas";
@@ -7,13 +9,14 @@ import MarcasDestacadas from "./Home/MarcasDestacadas/MarcasDestacadas";
 import Testimonios from "./Home/Testimonios/Testimonios";
 
 function Home() {
+    const navigate = useNavigate();
     const heroImg = "https://res.cloudinary.com/ihe8jaok/image/upload/v1788192323/landing_img.jpg"
     const handleExplorarCatalogo = () => {
-        console.log("Ir a catálogo con categoría Todas");
+        navigate(RUTAS.CATALOGO);
     };
 
-    const handleSeleccionarCategoria = (nombreCategoria) => {
-        console.log("Filtrar catálogo por categoría:", nombreCategoria);
+    const handleSeleccionarCategoria = () => {
+        navigate(RUTAS.CATALOGO);
     };
 
     const handleVerProducto = (idProducto) => {
@@ -32,7 +35,7 @@ function Home() {
     };
 
     return (
-        <main>
+        <>
             <Hero
                 titulo="Dale una segunda vida a tu ropa"
                 descripcion="Compra, vende y truequea prendas en un solo lugar."
@@ -49,7 +52,7 @@ function Home() {
             < ComoFunciona />
             < MarcasDestacadas />
             < Testimonios />
-        </main>
+        </>
     );
 }
 

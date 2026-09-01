@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { obtenerProductosDeRopa } from "../services/ejemploServicio";
+import { obtenerProductosDeRopa } from "../services/productosDestacadosService";
 import { mezclarArray } from "../utils/aleatorio";
 
 const CANTIDAD_A_MOSTRAR = 3;
