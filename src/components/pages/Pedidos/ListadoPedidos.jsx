@@ -3,7 +3,7 @@ import styles from "./MisPedidos.module.css";
 import { RUTAS } from "../../../constants/rutas";
 
 
-const ListadoPedidos = ({ pedidos }) => {
+const ListadoPedidos = ({ pedidos, onVerResena }) => {
 
     const mostrarSaldoTrueque = (saldo) => {
         const saldoNumerico = Number(saldo)
@@ -97,7 +97,7 @@ const ListadoPedidos = ({ pedidos }) => {
                             {pedido.estado === "Entregado" && (
                                 <>
                                     <Link className={styles.miLink}>Ver detalles</Link>
-                                    {!pedido.tieneResena ? (<Link className={styles.miLink}>Dejar reseña</Link>) : <Link className={styles.miLink}>Ver mi reseña</Link>}
+                                    {!pedido.tieneResena ? (<Link className={styles.miLink}>Dejar reseña</Link>) : <span className={styles.miLink} onClick={() => onVerResena(pedido)}>Ver mi reseña</span>}
 
                                     <Link className={styles.miLink}>Volver a comprar</Link>
                                 </>

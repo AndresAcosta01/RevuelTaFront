@@ -3,6 +3,8 @@ import pedidos from '../../data/pedidos.js'
 import { useState } from 'react'
 import ControlesPedidos from '../../components/pages/Pedidos/ControlesPedidos.jsx';
 import styles from "../../components/pages/Pedidos/MisPedidos.module.css";
+import VentanaModalMiResena from '../../components/pages/ModalMiResena/VentanaModalMiResena.jsx';
+import resenas from '../../data/resenas.js';
 
 const MisPedidos = () => {
 
@@ -16,6 +18,8 @@ const MisPedidos = () => {
 
   const [fechaDesde, setFechaDesde] = useState("");
   const [fechaHasta, setFechaHasta] = useState("");
+
+  const [pedidoResenaSeleccionado, setPedidoResenaSeleccionado] = useState(null);
 
   const verificarFecha = (pedido) => {
 
@@ -106,8 +110,15 @@ const MisPedidos = () => {
         />
 
         {/*<ListadoPedidos pedidos={pedidosFiltrados} />*/}
-        <ListadoPedidos pedidos={pedidosOrdenados} />
+        <ListadoPedidos pedidos={pedidosOrdenados} onVerResena={setPedidoResenaSeleccionado} />
       </section>
+
+      {pedidoResenaSeleccionado && (
+        <VentanaModalMiResena
+          resenas={resenas[pedidoResenaSeleccionado.id]}
+          onCerrar={() => setPedidoResenaSeleccionado(null)}
+        />
+      )}
     </main>
   )
 }
