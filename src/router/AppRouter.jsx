@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import MainLayout from "../layouts/MainLayout"
 import { RUTAS } from "../constants/rutas"
 import AuthLayout from "../layouts/AuthLayout"
+import Home from "../components/pages/Home"
 import Catalogo from "../pages/catalogo/Catalogo"
 import DetalleProducto from "../pages/producto/DetalleProducto"
 
@@ -10,7 +11,7 @@ const AppRouter = () => {
         <BrowserRouter>
             <Routes>
                 <Route element={<MainLayout />}>
-                    <Route path={RUTAS.LANDING_PAGE} element={null}/>
+                    <Route path={RUTAS.LANDING_PAGE} element={<Home />}/>
                     <Route path={RUTAS.PERFIL} element={null}/>
                     <Route path={RUTAS.PEDIDOS} element={null}/>
                     <Route path={RUTAS.TRUEQUES} element={null}/>
