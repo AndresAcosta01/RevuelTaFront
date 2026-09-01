@@ -1,0 +1,155 @@
+/* Component styles for ReVuelta product pages */
+
+/* Detail page layout */
+.detalleProductoContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.detalleGrid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 40px;
+}
+
+/* Gallery */
+.galeriaContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.imagenPrincipalWrapper {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  height: 400px;
+}
+
+.imagenPrincipal {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.miniaturasContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.miniaturaBtn {
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 0.25rem;
+  border-radius: 8px;
+  width: 70px;
+  height: 70px;
+}
+
+.miniaturaBtn.activa {
+  box-shadow: 0 6px 20px rgba(31,94,74,0.12);
+  border-color: var(--pine);
+}
+
+.miniaturaImg { width:100%; height:100%; object-fit:cover; display:block }
+
+/* Info column */
+.infoProductoContainer {
+  padding: 1rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--paper), var(--paper-2));
+  gap: 20px;
+}
+
+.productoMarca { font-family: var(--mono); color: var(--pine); font-size: 0.85rem }
+.productoTitulo { font-family: var(--heading); margin: 0.35rem 0; font-size: 28px }
+.productoVendedor { color: rgba(21,32,27,0.6); font-size: 0.95rem }
+.productoPrecio { display:block; margin-top:0.5rem; font-weight:700; color:var(--ink); font-size: 24px }
+
+.tallasGrid { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.5rem }
+.seccionTallas { margin-top:1rem }
+.seccionTallas label, .seccionCantidad label { font-family: var(--mono); font-size:0.8rem; color:var(--pine); letter-spacing:0.05em }
+.tallaBtn { padding:8px 16px; border-radius:8px; border:1px solid var(--line); background:transparent }
+.tallaBtn.seleccionada { background:var(--moss); color:var(--paper) }
+
+.controlCantidad { display:flex; gap:0.5rem; align-items:center }
+.seccionCantidad { margin-top:1rem }
+.controlCantidad button { width:40px; height:36px; padding:8px 16px; border-radius:8px; border:1px solid var(--line); background:transparent }
+
+.accionesContainer { display:flex; gap:12px; margin-top:0.9rem }
+.btnCarrito {
+  background: linear-gradient(90deg, var(--pine), var(--moss));
+  color: var(--paper);
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-weight:600;
+}
+
+.btnCarrito.agregado { opacity:0.7; cursor:not-allowed }
+
+.btnTrueque {
+  background: transparent;
+  border: 1px solid var(--pine);
+  color: var(--pine);
+  padding: 0.6rem 0.9rem;
+  border-radius: 10px;
+}
+
+/* Secciones */
+.seccionesContainer { margin-top:1rem }
+.tabsHeader { display:flex; gap:0.5rem; margin-bottom:0.75rem }
+.tabBtn { background:transparent; border:1px solid var(--line); padding:0.5rem 0.75rem; border-radius:8px }
+.tabBtn.activa { background:var(--paper-2); border-color:var(--pine); }
+.tabBtn.activa::after { bottom: -1px; }
+.tabContent { padding:1rem; border-radius:12px; background:var(--paper) }
+
+/* Descripción detalles table */
+.detallesTable { width:100%; border-collapse:collapse; margin-top:1rem }
+.detallesTable td { padding:0.75rem 0; border-bottom:1px solid var(--line) }
+.detallesLabel { width:30%; color:rgba(21,32,27,0.6); font-weight:500 }
+.detallesValue { width:70% }
+
+/* Descripción text style */
+.descripcionText {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: rgba(21,32,27,0.9);
+  margin: 0.5rem 0 0 0;
+  white-space: pre-line;
+}
+
+/* Productos relacionados */
+.relacionadosContainer { margin-top:1.25rem }
+.relacionadosTitulo { font-family: var(--heading); font-size:1rem; margin:0 0 0.75rem }
+.relacionadosGrid { display:flex; gap:20px; margin-top:0.75rem }
+.tarjetaProducto {
+  width:160px;
+  border-radius:12px;
+  border:1px solid var(--line);
+  padding:0.5rem;
+  background:var(--paper);
+  display:flex;
+  flex-direction:column;
+  min-height:340px;
+}
+.tarjetaImg { width:100%; height:180px; object-fit:cover; border-radius:8px }
+.tarjetaBody { padding-top:0.5rem; display:flex; flex-direction:column; gap:0.5rem; flex:1 }
+.tarjetaNombre { margin:0; }
+.tarjetaPrecio { color:var(--ink); font-weight:700; margin-top:auto; }
+
+/* Responsive */
+@media (max-width: 900px) {
+  .detalleGrid { grid-template-columns: 1fr; }
+  .relacionadosGrid { overflow-x:auto; }
+}
+
+@media (max-width: 768px) {
+  .detalleGrid { grid-template-columns: 1fr; }
+}

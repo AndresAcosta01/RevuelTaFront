@@ -4,7 +4,7 @@ import { RUTAS } from "../constants/rutas"
 import AuthLayout from "../layouts/AuthLayout"
 import Home from "../components/pages/Home"
 import Catalogo from "../pages/catalogo/Catalogo"
-import DetalleProducto from "../pages/producto/DetalleProducto"
+import PaginaDetalleProducto from "../pages/PaginaDetalleProducto"
 
 const AppRouter = () => {
     return (
@@ -19,7 +19,7 @@ const AppRouter = () => {
                     <Route path={RUTAS.CARRITO} element={null}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={null}/>
                     <Route path={RUTAS.CATALOGO} element={<Catalogo />}/>
-                    <Route path={RUTAS.DETALLE_PRODUCTO} element={<DetalleProducto />}/>
+                    <Route path={RUTAS.DETALLE_PRODUCTO} element={<PaginaDetalleProducto />}/>
                 </Route>
                 <Route element={<AuthLayout />}>
                     <Route path={RUTAS.REGISTRO} element={null}/>
