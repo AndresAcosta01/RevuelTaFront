@@ -4,6 +4,7 @@ import SeccionesProducto from '../components/pages/catalogo/SeccionesProducto';
 import ProductosRelacionados from '../components/pages/catalogo/ProductosRelacionados';
 import GaleriaProducto from '../components/pages/catalogo/GaleriaProducto';
 import { fetchProductById, fetchProducts } from '../services/productService';
+import { obtenerImagenesProducto, extraerImagenesProducto } from '../services/productoImagenesService';
 import styles from './DetalleProducto.module.css';
 
 const PaginaDetalleProducto = () => {
@@ -17,6 +18,15 @@ const PaginaDetalleProducto = () => {
       const p = await fetchProductById(id);
       const relacionados = await fetchProducts(4);
       p.relacionados = relacionados.filter(r => r.id !== p.id).slice(0, 4);
+
+      if (!Array.isArray(p.imagenes) || p.imagenes.length === 0) {
+        try {
+          p.imagenes = await obtenerImagenesProducto(id);
+        } catch {
+          p.imagenes = extraerImagenesProducto(p);
+        }
+      }
+
       setProducto(p);
       setError(null);
     } catch (err) {

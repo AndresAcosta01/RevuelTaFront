@@ -11,6 +11,7 @@
     --color-paper: #f6f2e9;
     --color-paper-2: #efe9dc;
     --color-line: #ded6c5;
+    --color-white: #ffffff;
 
     --text: var(--color-ink);
     --text-h: var(--color-ink);

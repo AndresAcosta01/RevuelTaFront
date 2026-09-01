@@ -1,4 +1,4 @@
-import api from './api'; // Importamos la instancia configurada, no la librería cruda
+import api from './apidos'; // Importamos la instancia configurada, no la librería cruda
 
 
 export const obtenerCategorias = async () => {

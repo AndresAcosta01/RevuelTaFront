@@ -9,14 +9,41 @@ function normalizarCalificacion(rating) {
   return Number.isFinite(numero) ? numero : 0;
 }
 
+const COLORES_PLACEHOLDER = ['#4a6fa5', '#d4739b', '#c2a488', '#3f7d58', '#22262b', '#8a5a3b']
+
+// Crea un placeholder para completar la galería cuando la API solo devuelve una imagen.
+function placeholderGaleria(texto, indice) {
+  const color = COLORES_PLACEHOLDER[Math.abs(indice) % COLORES_PLACEHOLDER.length]
+  const etiqueta = encodeURIComponent(`Vista ${indice + 1} - ${texto}`)
+  return `data:image/svg+xml,${encodeURIComponent(
+    `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect width="600" height="800" fill="${color}"/><text x="50%" y="50%" font-family="Arial, sans-serif" font-size="32" fill="#ffffff" text-anchor="middle" dominant-baseline="middle">${etiqueta}</text></svg>`,
+  )}`
+}
+
 // Mapea un producto desde la forma de la API al shape usado por la app.
 // Si cambias de API, modifica o sustituye este mapeador.
 export const mapApiProduct = (apiProd) => {
   if (!apiProd) return null;
-  const imagenes = (Array.isArray(apiProd.images) ? apiProd.images : [])
-    .concat(apiProd.image ? [apiProd.image] : [])
-    .filter((url) => typeof url === 'string' && url.trim() !== '')
-    .map((url, idx) => ({ id: `${apiProd.id}-${idx}`, url }));
+  const urlsUnicas = []
+  const agregar = (url) => {
+    if (typeof url === 'string' && url.trim() !== '' && !urlsUnicas.includes(url.trim())) {
+      urlsUnicas.push(url.trim())
+    }
+  }
+  ;(Array.isArray(apiProd.images) ? apiProd.images : []).forEach(agregar)
+  agregar(apiProd.image)
+
+  // Si la API solo trajo una imagen (p.ej. Fake Store), generamos vistas
+  // complementarias para que la galería muestre varias imágenes debajo.
+  if (urlsUnicas.length === 1) {
+    const original = urlsUnicas[0]
+    for (let i = 1; i < 5; i += 1) urlsUnicas.push(placeholderGaleria(apiProd.title, i))
+    urlsUnicas.unshift(original)
+  } else if (urlsUnicas.length === 0) {
+    for (let i = 0; i < 5; i += 1) urlsUnicas.push(placeholderGaleria(apiProd.title, i))
+  }
+
+  const imagenes = urlsUnicas.map((url, idx) => ({ id: `${apiProd.id}-${idx}`, url }));
   return {
     id: apiProd.id,
     marca: apiProd.category?.name || apiProd.category || '',
