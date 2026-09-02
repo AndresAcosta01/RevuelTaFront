@@ -5,6 +5,7 @@ import AuthLayout from "../layouts/AuthLayout"
 import MisPedidos from "../pages/Pedidos/MisPedidos"
 import SeguimientoEnvio from "../pages/SeguimientoEnvio/SeguimientoEnvio"
 import Home from "../components/pages/Home"
+import InicioSesion from "../pages/InicioSesion"
 
 const AppRouter = () => {
     return (
@@ -23,7 +24,7 @@ const AppRouter = () => {
                 </Route>
                 <Route element={<AuthLayout />}>
                     <Route path={RUTAS.REGISTRO} element={null}/>
-                    <Route path={RUTAS.INICIAR_SESION} element={null}/>
+                    <Route path={RUTAS.INICIAR_SESION} element={<InicioSesion />}/>
                 </Route>
             </Routes>
         </BrowserRouter>

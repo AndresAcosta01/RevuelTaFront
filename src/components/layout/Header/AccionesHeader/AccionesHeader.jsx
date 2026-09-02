@@ -7,21 +7,14 @@ import { obtenerNotificaciones } from "../../../../services/notificacionesServic
 import { useEffect, useRef, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { RUTAS } from "../../../../constants/rutas"
+import { useAuth } from "../../../../hooks/useAuth"
 
 const AccionesHeader = () => {
+    const { autenticado, cerrarSesion: cerrarSesionContexto } = useAuth()
+    const navigate = useNavigate()
     const [panelActivo, setPanelActivo] = useState(null)
     const [publicarMovilAbierto, setPublicarMovilAbierto] = useState(false)
 
-    const [estaAutenticado, setEstaAutenticado] = useState(() => {
-        const estadoGuardado = localStorage.getItem("estaAutenticado")
-
-        if (estadoGuardado === null) {
-            localStorage.setItem("estaAutenticado", "true")
-            return true
-        }
-
-        return estadoGuardado === "true"
-    })
     const notificaciones = obtenerNotificaciones()
     const contenedorAcciones = useRef(null)
 
@@ -81,19 +74,12 @@ const AccionesHeader = () => {
     }
 
     function cerrarSesion() {
-        localStorage.setItem("estaAutenticado", "false")
+        cerrarSesionContexto()
 
-        setEstaAutenticado(false)
         setPanelActivo(null)
         setPublicarMovilAbierto(false)
 
         navigate(RUTAS.LANDING_PAGE)
-    }
-
-    function activarSesionPrueba() {
-        localStorage.setItem("estaAutenticado", "true")
-        setEstaAutenticado(true)
-        setPanelActivo(null)
     }
 
     const cerrarPanelActivo = () => {
@@ -112,13 +98,6 @@ const AccionesHeader = () => {
     return (
         <>
             <div className={styles.accionesHeader} ref={contenedorAcciones}>
-                {import.meta.env.DEV && (
-                    <button
-                        type="button"
-                        className={styles.botonSesionPrueba}
-                        onClick={activarSesionPrueba}>
-                    </button>
-                )}
                 <button
                     className={`${styles.botonIcono} ${panelActivo === "notificaciones"
                         ? styles.botonIconoActivo
@@ -127,19 +106,19 @@ const AccionesHeader = () => {
                     onClick={alternarNotificaciones}>
                     <Bell />
 
-                    {estaAutenticado && notificaciones.length > 0 && (
+                    {autenticado && notificaciones.length > 0 && (
                         <span className={styles.indicadorNotificacion}></span>
                     )}
                 </button>
 
-                {estaAutenticado ? (
+                {autenticado ? (
                     <NavLink
                         to={RUTAS.CARRITO}
                         className={styles.botonIcono}
                         onClick={cerrarPanelActivo}>
                         <ShoppingCart />
 
-                        {estaAutenticado && cantidadCarrito > 0 && (
+                        {autenticado && cantidadCarrito > 0 && (
                             <span className={styles.contadorCarrito}>
                                 {contadorCarrito}
                             </span>
@@ -154,7 +133,7 @@ const AccionesHeader = () => {
                         onClick={alternarCarrito}>
                         <ShoppingCart />
 
-                        {estaAutenticado && cantidadCarrito > 0 && (
+                        {autenticado && cantidadCarrito > 0 && (
                             <span className={styles.contadorCarrito}>
                                 {contadorCarrito}
                             </span>
@@ -171,7 +150,7 @@ const AccionesHeader = () => {
                     <UserRound />
                 </button>
 
-                {estaAutenticado ? (
+                {autenticado ? (
                     <NavLink
                         to={RUTAS.PUBLICAR_PRENDA}
                         className={styles.botonPublicar}
@@ -190,7 +169,7 @@ const AccionesHeader = () => {
 
                 <div className={styles.publicarFlotante}>
                     {publicarMovilAbierto && (
-                        estaAutenticado ? (
+                        autenticado ? (
                             <NavLink
                                 to={RUTAS.PUBLICAR_PRENDA}
                                 className={styles.accionPublicarMovil}
@@ -220,23 +199,23 @@ const AccionesHeader = () => {
                     </button>
                 </div>
 
-                {estaAutenticado && panelActivo === "perfil" && (
+                {autenticado && panelActivo === "perfil" && (
                     <PanelPerfil
                         cerrarPanelActivo={cerrarPanelActivo}
                         cerrarSesion={cerrarSesion} />
                 )}
 
-                {estaAutenticado && panelActivo === "notificaciones" && (
+                {autenticado && panelActivo === "notificaciones" && (
                     <PanelNotificaciones
                         notificaciones={notificaciones} />
                 )}
 
-                {!estaAutenticado && panelActivo !== null && (
+                {!autenticado && panelActivo !== null && (
                     <PanelIdentificacion />
                 )}
             </div>
 
-            {estaAutenticado && (
+            {autenticado && (
                 panelActivo === "perfil" ||
                 panelActivo === "notificaciones"
             ) && (
