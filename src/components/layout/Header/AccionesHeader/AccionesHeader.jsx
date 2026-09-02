@@ -12,7 +12,6 @@ import { useAuth } from "../../../../hooks/useAuth"
 const AccionesHeader = () => {
     const { autenticado, cerrarSesion: cerrarSesionContexto } = useAuth()
     const navigate = useNavigate()
-
     const [panelActivo, setPanelActivo] = useState(null)
     const [publicarMovilAbierto, setPublicarMovilAbierto] = useState(false)
 
