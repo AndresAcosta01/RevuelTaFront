@@ -15,16 +15,13 @@ const VentanaModalMiResena = ({ resenas, onCerrar }) => {
         };
     }, [resenas]);
 
-    const renderizarEstrellas = (calificacion) => {
-        const estrellas = Array.from({ length: 5 }, (_, indice) => indice + 1);
-
-        return estrellas.map((valor) => (
+    const renderizarEstrellas = (calificacion) =>
+        [1, 2, 3, 4, 5].map((valor) => (
             <Star
                 key={valor}
                 className={`${styles.estrella} ${valor <= calificacion ? styles.estrellaRellena : ""}`}
             />
         ));
-    };
 
     if (!resenas || resenas.length === 0) {
         return null;

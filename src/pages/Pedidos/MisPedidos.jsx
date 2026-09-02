@@ -5,8 +5,23 @@ import ControlesPedidos from '../../components/pages/Pedidos/ControlesPedidos.js
 import styles from "../../components/pages/Pedidos/MisPedidos.module.css";
 import VentanaModalMiResena from '../../components/pages/ModalMiResena/VentanaModalMiResena.jsx';
 import resenas from '../../data/resenas.js';
+import useProductosPedidos from '../../hooks/useProductosPedidos.js';
 
 const MisPedidos = () => {
+
+  const { productos } = useProductosPedidos();
+
+  const imagenesProductos = Object.fromEntries(productos.map((producto) => [producto.id, producto.imagen]));
+
+  const imagenesPorPrenda = {
+    ...imagenesProductos,
+    3: imagenesProductos[17],
+    2: imagenesProductos[1],
+    1: imagenesProductos[19],
+    4: imagenesProductos[16],
+    5: imagenesProductos[2],
+    6: imagenesProductos[4],
+  };
 
   const [estadoSeleccionado, setEstadoSeleccionado] = useState("Todos");
 
@@ -110,7 +125,7 @@ const MisPedidos = () => {
         />
 
         {/*<ListadoPedidos pedidos={pedidosFiltrados} />*/}
-        <ListadoPedidos pedidos={pedidosOrdenados} onVerResena={setPedidoResenaSeleccionado} />
+        <ListadoPedidos pedidos={pedidosOrdenados} imagenesPorPrenda={imagenesPorPrenda} onVerResena={setPedidoResenaSeleccionado} />
       </section>
 
       {pedidoResenaSeleccionado && (

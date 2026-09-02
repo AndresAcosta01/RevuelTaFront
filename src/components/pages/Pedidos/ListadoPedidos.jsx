@@ -3,7 +3,7 @@ import styles from "./MisPedidos.module.css";
 import { RUTAS } from "../../../constants/rutas";
 
 
-const ListadoPedidos = ({ pedidos, onVerResena }) => {
+const ListadoPedidos = ({ pedidos, imagenesPorPrenda, onVerResena }) => {
 
     const mostrarSaldoTrueque = (saldo) => {
         const saldoNumerico = Number(saldo)
@@ -49,6 +49,13 @@ const ListadoPedidos = ({ pedidos, onVerResena }) => {
                                         <div className={styles.prendaInfo}>
                                             <h3>{prenda.nombre}</h3>
 
+                                            {imagenesPorPrenda[prenda.id] && (
+                                                <img
+                                                    className={styles.prendaImagen}
+                                                    src={imagenesPorPrenda[prenda.id]}
+                                                    alt={prenda.nombre}
+                                                />
+                                            )}
                                         </div>
 
                                         <span className={styles.prendaPrecio}>
@@ -64,13 +71,33 @@ const ListadoPedidos = ({ pedidos, onVerResena }) => {
                         {pedido.tipoOperacion === "trueque" && (
                             <div className={styles.pedidoTrueque}>
                                 <div className={styles.prenda}>
-                                    <section className={styles.prendaInfo}><h3>{pedido.prendas[0].nombre}</h3></section>
+                                    <section className={styles.prendaInfo}>
+                                        <h3>{pedido.prendas[0].nombre}</h3>
+
+                                        {imagenesPorPrenda[pedido.prendas[0].id] && (
+                                            <img
+                                                className={styles.prendaImagen}
+                                                src={imagenesPorPrenda[pedido.prendas[0].id]}
+                                                alt={pedido.prendas[0].nombre}
+                                            />
+                                        )}
+                                    </section>
                                 </div>
 
                                 <div className={styles.truequeIndicador}>↕</div>
 
                                 <div className={styles.prenda}>
-                                    <section className={styles.prendaInfo}><h3>{pedido.prendas[1].nombre}</h3></section>
+                                    <section className={styles.prendaInfo}>
+                                        <h3>{pedido.prendas[1].nombre}</h3>
+
+                                        {imagenesPorPrenda[pedido.prendas[1].id] && (
+                                            <img
+                                                className={styles.prendaImagen}
+                                                src={imagenesPorPrenda[pedido.prendas[1].id]}
+                                                alt={pedido.prendas[1].nombre}
+                                            />
+                                        )}
+                                    </section>
                                 </div>
 
                                 <div className={styles.saldoTrueque}>{mostrarSaldoTrueque(pedido.saldoTrueque)}</div>

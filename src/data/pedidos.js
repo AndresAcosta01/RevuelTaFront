@@ -7,7 +7,7 @@ const pedidos = [
         prendas: [
             {
                 id: 1,
-                nombre: "Camisa negra",
+                nombre: "Blusa roja",
                 precio: 50000
             }
         ]
@@ -21,7 +21,7 @@ const pedidos = [
         prendas: [
             {
                 id: 2,
-                nombre: "Jean azul",
+                nombre: "Mochila",
                 precio: 80000
             }
         ]
@@ -36,7 +36,7 @@ const pedidos = [
         prendas: [
             {
                 id: 3,
-                nombre: "Vestido rojo",
+                nombre: "Chaqueta azul",
                 precio: 90000
             }
         ]
@@ -68,11 +68,11 @@ const pedidos = [
         prendas: [
             {
                 id: 5,
-                nombre: "Camisa blanca"
+                nombre: "Camiseta gris"
             },
             {
                 id: 6,
-                nombre: "Jean azul"
+                nombre: "Camibuso azul"
             }
         ]
     }
