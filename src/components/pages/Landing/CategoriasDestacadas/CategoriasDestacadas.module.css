@@ -140,13 +140,3 @@
     padding: 40px 24px;
   }
 }
-
-.loading,
-.error {
-  font-family: var(--font-body);
-  text-align: center;
-  padding: 48px 24px;
-  font-size: 1.1rem;
-  color: var(--color-ink);
-  background-color: var(--color-paper);
-}

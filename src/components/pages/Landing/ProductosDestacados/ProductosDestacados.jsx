@@ -3,11 +3,7 @@ import ProductoCard from "./ProductoCard";
 import styles from "../ProductosDestacados/ProductosDestacados.module.css";
 
 function ProductosDestacados({ onVerProducto, onAgregarCarrito, onTrueque }) {
-    const { productos, cargando, error } = useProductosDestacados();
-
-    if (cargando) return <div className={styles.loading}>Cargando productos...</div>;
-    if (error) return <div className={styles.error}>No se pudieron cargar los productos.</div>;
-
+    const { productos } = useProductosDestacados();
     return (
         <section className={styles.container}>
             <h2 className={styles.title}>Productos Destacados</h2>

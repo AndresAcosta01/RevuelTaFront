@@ -9,10 +9,7 @@ function useProductosDestacados() {
     const [productos] = useState(() =>
         mezclarArray(productosCatalogo.map(mapearProductoLocal)).slice(0, CANTIDAD_A_MOSTRAR),
     );
-    const [cargando] = useState(false);
-    const [error] = useState(null);
-
-    return { productos, cargando, error };
+    return { productos };
 }
 
 export default useProductosDestacados;

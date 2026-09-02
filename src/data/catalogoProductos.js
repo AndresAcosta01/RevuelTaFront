@@ -3,24 +3,7 @@
 // Catálogo de prendas + estructura de filtros (ComercioAPP)
 // ============================================================
 
-// ---------- 1. Opciones de filtros (para pintar los checkboxes/select) ----------
-
-export const opcionesFiltros = {
-  categoria: ['Chaquetas', 'Vestidos', 'Pantalones', 'Blusas', 'Camisas', 'Faldas', 'Zapatos', 'Accesorios'],
-  talla: ['XS', 'S', 'M', 'L', 'XL'],
-  color: ['Negro', 'Blanco', 'Azul', 'Rojo', 'Verde', 'Beige', 'Rosa', 'Amarillo'],
-  marca: ['Levis', 'Zara', 'H&M', 'Adidas', 'Nike', 'Stradivarius'],
-  precio: [
-    { etiqueta: 'Hasta $50.000', min: 0, max: 50000 },
-    { etiqueta: '$50.000 - $100.000', min: 50000, max: 100000 },
-    { etiqueta: '$100.000 - $200.000', min: 100000, max: 200000 },
-    { etiqueta: '$200.000 - $500.000', min: 200000, max: 500000 },
-  ],
-  estadoPrenda: ['Nuevo', 'Excelente', 'Muy bueno', 'Bueno'],
-  disponiblePara: ['Mujer', 'Hombre', 'Niño', 'Unisex'],
-};
-
-// ---------- 2. Catálogo de productos (uno por cada imagen recortada) ----------
+// ---------- Catálogo de productos ----------
 
 const urlBaseImagenes = 'https://res.cloudinary.com/zslcesok/image/upload/v1788317585/';
 
