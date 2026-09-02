@@ -22,17 +22,19 @@ const GaleriaProducto = ({ imagenes = [] }) => {
           <div className={styles.imagenPrincipal}>Sin imagen disponible</div>
         )}
       </div>
-      <div className={styles.miniaturasContainer}>
-        {imagenesValidas.map((imagen, idx) => (
-          <button
-            key={imagen.id}
-            onClick={() => setActiveIndex(idx)}
-            className={`${styles.miniaturaBtn} ${imagenActiva?.id === imagen.id ? styles.activa : ''}`}
-          >
-            <img src={imagen.url} alt="miniatura" className={styles.miniaturaImg} />
-          </button>
-        ))}
-      </div>
+      {imagenesValidas.length > 1 && (
+        <div className={styles.miniaturasContainer}>
+          {imagenesValidas.map((imagen, idx) => (
+            <button
+              key={imagen.id}
+              onClick={() => setActiveIndex(idx)}
+              className={`${styles.miniaturaBtn} ${imagenActiva?.id === imagen.id ? styles.activa : ''}`}
+            >
+              <img src={imagen.url} alt="miniatura" className={styles.miniaturaImg} />
+            </button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

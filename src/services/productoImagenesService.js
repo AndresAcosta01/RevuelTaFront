@@ -1,4 +1,4 @@
-import api from './api';
+import api from './apidos';
 
 // Extrae todas las imágenes reales de un producto tal como viene de la API.
 // Soporta tanto `images` (array, p.ej. Platzi) como `image` (string, p.ej. Fake Store),

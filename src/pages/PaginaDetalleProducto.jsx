@@ -4,7 +4,6 @@ import SeccionesProducto from '../components/pages/catalogo/SeccionesProducto';
 import ProductosRelacionados from '../components/pages/catalogo/ProductosRelacionados';
 import GaleriaProducto from '../components/pages/catalogo/GaleriaProducto';
 import { fetchProductById, fetchProducts } from '../services/productService';
-import { obtenerImagenesProducto, extraerImagenesProducto } from '../services/productoImagenesService';
 import styles from './DetalleProducto.module.css';
 
 const PaginaDetalleProducto = () => {
@@ -16,16 +15,8 @@ const PaginaDetalleProducto = () => {
     try {
       setLoading(true);
       const p = await fetchProductById(id);
-      const relacionados = await fetchProducts(4);
+      const relacionados = await fetchProducts(1000);
       p.relacionados = relacionados.filter(r => r.id !== p.id).slice(0, 4);
-
-      if (!Array.isArray(p.imagenes) || p.imagenes.length === 0) {
-        try {
-          p.imagenes = await obtenerImagenesProducto(id);
-        } catch {
-          p.imagenes = extraerImagenesProducto(p);
-        }
-      }
 
       setProducto(p);
       setError(null);
@@ -49,7 +40,7 @@ const PaginaDetalleProducto = () => {
 
       // Si no hay id en la URL, intentamos obtener el primer producto disponible
       try {
-        const lista = await fetchProducts(1);
+        const lista = await fetchProducts(10);
         const first = Array.isArray(lista) && lista.length > 0 ? lista[0] : null;
         const id = first ? first.id : null;
         if (id) await loadProducto(id);
