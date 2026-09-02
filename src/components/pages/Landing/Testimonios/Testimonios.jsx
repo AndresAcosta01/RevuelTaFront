@@ -1,6 +1,6 @@
 import testimonios from "../../../../data/testimonios";
 import TarjetaTestimonio from "./TarjetaTestimonio";
-import styles from "../Testimonios/Testimonios.module.css";
+import styles from "./Testimonios.module.css";
 
 function Testimonios() {
     return (

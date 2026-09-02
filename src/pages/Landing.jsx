@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { RUTAS } from "../../constants/rutas"
-import Hero from "./Home/Hero/Hero";
-import CategoriasDestacadas from "./Home/CategoriasDestacadas/CategoriasDestacadas";
-import Estadisticas from "./Home/Estadisticas/Estadisticas";
-import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados";
-import ComoFunciona from "./Home/ComoFunciona/ComoFunciona";
-import MarcasDestacadas from "./Home/MarcasDestacadas/MarcasDestacadas";
-import Testimonios from "./Home/Testimonios/Testimonios";
-import ProductModal from "../modals/ProductModal/ProductModal";
+import { RUTAS } from "../constants/rutas"
+import Hero from "../components/pages/Landing/Hero/Hero";
+import CategoriasDestacadas from "../components/pages/Landing/CategoriasDestacadas/CategoriasDestacadas";
+import Estadisticas from "../components/pages/Landing/Estadisticas/Estadisticas";
+import ProductosDestacados from "../components/pages/Landing/ProductosDestacados/ProductosDestacados";
+import ComoFunciona from "../components/pages/Landing/ComoFunciona/ComoFunciona";
+import MarcasDestacadas from "../components/pages/Landing/MarcasDestacadas/MarcasDestacadas";
+import Testimonios from "../components/pages/Landing/Testimonios/Testimonios";
+import ProductModal from "../components/modals/ProductModal/ProductModal";
 
 function Home() {
     const navigate = useNavigate();
