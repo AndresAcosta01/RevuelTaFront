@@ -13,7 +13,7 @@ function extraerImagenes(producto) {
   return urls.length > 0 ? urls : [imagenPlaceholder(producto.nombre, producto.id)]
 }
 
-function ProductModal({ producto, estaAbierto, onCerrar, onProponerTrueque }) {
+function ProductModal({ producto, estaAbierto, onCerrar, onProponerTrueque, onVerCatalogo }) {
   if (!estaAbierto || !producto) return null
 
   const imagenes = extraerImagenes(producto)
@@ -98,6 +98,15 @@ function ProductModal({ producto, estaAbierto, onCerrar, onProponerTrueque }) {
         >
           Proponer Trueque
         </button>
+
+        {onVerCatalogo && (
+          <button
+            className={`${styles.botonAccion} ${styles.botonCatalogo}`}
+            onClick={onVerCatalogo}
+          >
+            Ver en catálogo
+          </button>
+        )}
       </div>
     </div>
   )

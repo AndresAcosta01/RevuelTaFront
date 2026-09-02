@@ -177,3 +177,15 @@
     color: var(--text);
     cursor: not-allowed;
 }
+
+.botonCatalogo {
+    margin-top: 10px;
+    background: var(--color-paper-2);
+    color: var(--color-moss);
+    border: 1px solid var(--accent-border);
+}
+
+.botonCatalogo:hover {
+    filter: none;
+    background: var(--accent-bg);
+}

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RUTAS } from "../../constants/rutas"
 import Hero from "./Home/Hero/Hero";
@@ -7,10 +8,14 @@ import ProductosDestacados from "./Home/ProductosDestacados/ProductosDestacados"
 import ComoFunciona from "./Home/ComoFunciona/ComoFunciona";
 import MarcasDestacadas from "./Home/MarcasDestacadas/MarcasDestacadas";
 import Testimonios from "./Home/Testimonios/Testimonios";
+import ProductModal from "../modals/ProductModal/ProductModal";
 
 function Home() {
     const navigate = useNavigate();
     const heroImg = "https://res.cloudinary.com/ihe8jaok/image/upload/v1788192323/landing_img.jpg"
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+    const [modalAbierto, setModalAbierto] = useState(false);
+
     const handleExplorarCatalogo = () => {
         navigate(RUTAS.CATALOGO);
     };
@@ -19,19 +24,26 @@ function Home() {
         navigate(RUTAS.CATALOGO);
     };
 
-    const handleVerProducto = (idProducto) => {
-        
-        console.log("Abrir modal de producto:", idProducto);
+    const abrirModalProducto = (producto) => {
+        setProductoSeleccionado(producto);
+        setModalAbierto(true);
     };
 
-    const handleAgregarCarrito = (idProducto) => {
-        
-        console.log("Agregar al carrito / abrir modal:", idProducto);
+    const handleVerProducto = (producto) => {
+        abrirModalProducto(producto);
     };
 
-    const handleTrueque = (idProducto) => {
-        
-        console.log("Iniciar trueque:", idProducto);
+    const handleAgregarCarrito = (producto) => {
+        abrirModalProducto(producto);
+    };
+
+    const handleTrueque = (producto) => {
+        abrirModalProducto(producto);
+    };
+
+    const handleVerCatalogo = () => {
+        setModalAbierto(false);
+        navigate(RUTAS.CATALOGO);
     };
 
     return (
@@ -52,6 +64,14 @@ function Home() {
             < ComoFunciona />
             < MarcasDestacadas />
             < Testimonios />
+
+            <ProductModal
+                producto={productoSeleccionado}
+                estaAbierto={modalAbierto && !!productoSeleccionado}
+                onCerrar={() => setModalAbierto(false)}
+                onProponerTrueque={handleVerCatalogo}
+                onVerCatalogo={handleVerCatalogo}
+            />
         </>
     );
 }
