@@ -19,6 +19,18 @@
     --color-paper-2: var(--paper-2);
     --color-line: var(--line);
 
+    /* Alias semánticos (catálogo / detalle de producto / modales / tarjetas) */
+    --accent: var(--pine);
+    --accent-bg: rgba(31, 94, 74, 0.08);
+    --accent-border: var(--moss);
+    --border: var(--line);
+    --text: var(--ink);
+    --text-h: var(--ink);
+    --bg: #ffffff;
+    --color-white: #ffffff;
+    --shadow: 0 4px 12px rgba(21, 32, 27, 0.08);
+    --social-bg: var(--paper-2);
+
     /* Estados */
     --success: var(--moss);
     --warning: var(--marigold);

@@ -34,6 +34,10 @@
 .points {
   color: var(--pine);
 }
+
+.iconPuntos {
+  color: var(--marigold);
+}
 .confirmButton {
   background-color: var(--pine);
   color: #ffffff;

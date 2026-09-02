@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { campanas } from '../../../data/campanasMock';
 import SelectorEstadoCampanas from './campanas/SelectorEstadoCampanas';
 import ListadoCampanas from './campanas/ListadoCampanas';
+import styles from './VentanaModalCampanas.module.css';
 
 const ITEMS_POR_PAGINA = 4;
 
@@ -23,22 +24,21 @@ const VentanaModalCampanas = ({ onCerrar }) => {
 
   return (
     <div
-      className="modal d-block"
+      className={`modal d-block ${styles.overlay}`}
       tabIndex="-1"
-      style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)' }}
       role="dialog"
       aria-modal="true"
     >
       <div className="modal-dialog modal-dialog-centered modal-lg">
         <div className="modal-content border-0 shadow">
           <div className="modal-header border-0">
-            <h5 className="modal-title fw-bold" style={{ color: 'var(--ink)' }}>
+            <h5 className={`modal-title fw-bold ${styles.title}`}>
               Campañas
             </h5>
             <button type="button" className="btn-close" aria-label="Cerrar" onClick={onCerrar} />
           </div>
 
-          <div className="modal-body" style={{ maxHeight: '65vh', overflowY: 'auto' }}>
+          <div className={`modal-body ${styles.body}`}>
             <SelectorEstadoCampanas
               estadoSeleccionado={estadoSeleccionado}
               onCambiarEstado={handleCambiarEstado}
@@ -55,8 +55,7 @@ const VentanaModalCampanas = ({ onCerrar }) => {
           <div className="modal-footer border-0 justify-content-center">
             <button
               type="button"
-              className="btn fw-semibold px-4"
-              style={{ backgroundColor: 'var(--paper-2)', color: 'var(--ink)' }}
+              className={`btn fw-semibold px-4 ${styles.btnCerrar}`}
               onClick={onCerrar}
             >
               Cerrar

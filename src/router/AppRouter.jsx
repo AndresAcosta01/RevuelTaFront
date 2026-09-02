@@ -4,25 +4,28 @@ import { RUTAS } from "../constants/rutas"
 import AuthLayout from "../layouts/AuthLayout"
 import MisPedidos from "../pages/Pedidos/MisPedidos"
 import SeguimientoEnvio from "../pages/SeguimientoEnvio/SeguimientoEnvio"
-import Home from "../components/pages/Home"
 import InicioSesion from "../pages/InicioSesion"
 import DescuentosCampanas from "../pages/mercadeo/DescuentosCampanas"
 import RecuperarContrasenaPage from "../components/RecuperacionContraseña/RecuperarContrasena"
+import Landing from "../pages/Landing"
+import Catalogo from "../pages/catalogo/Catalogo"
+import PaginaDetalleProducto from "../pages/PaginaDetalleProducto"
 
 const AppRouter = () => {
     return (
         <BrowserRouter>
             <Routes>
                 <Route element={<MainLayout />}>
-                    <Route path={RUTAS.LANDING_PAGE} element={<Home />}/>
+                    <Route path={RUTAS.LANDING_PAGE} element={< Landing />}/>
                     <Route path={RUTAS.PERFIL} element={null}/>
                     <Route path={RUTAS.PEDIDOS} element={<MisPedidos />}/>
                     <Route path={RUTAS.TRUEQUES} element={null}/>
                     <Route path={RUTAS.CAMPANAS_DESCUENTOS} element={<DescuentosCampanas />} />
                     <Route path={RUTAS.CARRITO} element={null}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={null}/>
-                    <Route path={RUTAS.CATALOGO} element={null}/>
                     <Route path={RUTAS.SEGUIMIENTO_ENVIO} element={<SeguimientoEnvio />}/>
+                    <Route path={RUTAS.CATALOGO} element={<Catalogo />}/>
+                    <Route path={RUTAS.DETALLE_PRODUCTO} element={<PaginaDetalleProducto />}/>
                 </Route>
                 <Route element={<AuthLayout />}>
                     <Route path={RUTAS.REGISTRO} element={null}/>

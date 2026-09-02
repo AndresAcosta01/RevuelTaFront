@@ -1,4 +1,4 @@
-import styles from "../Testimonios/Testimonios.module.css";
+import styles from "./Testimonios.module.css";
 
 function TarjetaTestimonio({ nombre, calificacion, descripcion }) {
     return (

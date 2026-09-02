@@ -7,6 +7,10 @@
   background-position: center;
   min-height: 120px;
 }
+
+.placeholderIcon {
+  color: var(--line);
+}
 .badge {
   background-color: var(--ink);
   color: #ffffff;

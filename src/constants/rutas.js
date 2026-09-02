@@ -6,6 +6,7 @@ export const RUTAS = {
     CAMPANAS_DESCUENTOS: "/campanas-descuentos",
     CARRITO: "/carrito",
     CATALOGO: "/catalogo",
+    DETALLE_PRODUCTO: "/producto/:id",
     PUBLICAR_PRENDA: "/publicar-prenda",
     REGISTRO: "/registro",
     INICIAR_SESION: "/iniciar-sesion",

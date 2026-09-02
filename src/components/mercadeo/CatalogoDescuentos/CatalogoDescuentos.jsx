@@ -74,7 +74,7 @@ const CatalogoDescuentos = ({ onSeleccionarCanje }) => {
                 <p className={`${styles.itemTitle} fw-bold small mb-1`}>{formatearDescuento(item)}</p>
                 <p className={`${styles.itemText} small text-muted mb-2`}>{item.condicion}</p>
                 <p className={`${styles.points} small fw-semibold mb-3`}>
-                  <i className="bi bi-star-fill me-1" style={{ color: 'var(--marigold)' }}></i>
+                  <i className={`bi bi-star-fill me-1 ${styles.iconPuntos}`}></i>
                   {item.puntos} puntos
                 </p>
                 <button

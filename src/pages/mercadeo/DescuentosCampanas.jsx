@@ -20,6 +20,7 @@ import { nivelesPrograma } from '../../data/nivelesMock';
 import { ofertaDestacada } from '../../data/ofertaDestacadaMock';
 import { historialPuntos } from '../../data/historialMock';
 import { RUTAS } from '../../constants/rutas';
+import styles from './DescuentosCampanas.module.css';
 
 
 const DescuentosCampanas = () => {
@@ -59,12 +60,12 @@ const DescuentosCampanas = () => {
   };
 
   return (
-    <div className="container py-4" style={{ fontFamily: 'var(--font-body)' }}>
+    <div className={`container py-4 ${styles.root}`}>
       {
 }
       <div className="mb-4 d-flex justify-content-between align-items-end gap-3 flex-wrap">
         <div>
-          <h1 className="fw-bold mb-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--ink)' }}>
+          <h1 className={`fw-bold mb-1 ${styles.title}`}>
             Descuentos y campañas
           </h1>
           <p className="text-muted mb-0">
@@ -74,14 +75,7 @@ const DescuentosCampanas = () => {
 
         <Link
           to={RUTAS.RECUPERAR_CONTRASENA}
-          className="btn btn-sm rounded-pill px-3 fw-semibold"
-          style={{
-            border: '1px solid var(--color-pine)',
-            backgroundColor: 'white',
-            color: 'var(--color-pine)',
-            fontFamily: 'var(--font-body)',
-            boxShadow: 'none',
-          }}
+          className={`btn btn-sm rounded-pill px-3 fw-semibold ${styles.btnRecuperar}`}
         >
           Recuperar contraseña
         </Link>

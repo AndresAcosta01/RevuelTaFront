@@ -1,4 +1,5 @@
 import Paginacion from '../../Paginacion/Paginacion';
+import styles from './ListadoCampanas.module.css';
 
 /**
  * MER-DC04 · Componente 3: ListadoCampanas
@@ -14,19 +15,12 @@ const ListadoCampanas = ({ campanas, paginaActual, totalPaginas, onCambiarPagina
         {campanas.map((campana) => (
           <div
             key={campana.id}
-            className="d-flex gap-3 p-3 rounded"
-            style={{ border: '1px solid var(--line)', backgroundColor: '#ffffff' }}
+            className={`d-flex gap-3 p-3 rounded ${styles.card}`}
           >
             <div
-              className="d-flex justify-content-center align-items-center rounded flex-shrink-0"
+              className={`d-flex justify-content-center align-items-center rounded flex-shrink-0 ${styles.thumb}`}
               style={{
-                width: '72px',
-                height: '72px',
-                backgroundColor: 'var(--paper-2)',
-                color: 'var(--line)',
                 backgroundImage: campana.imagen ? `url(${campana.imagen})` : 'none',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
               }}
             >
               {!campana.imagen && <i className="bi bi-image fs-4"></i>}
@@ -34,20 +28,15 @@ const ListadoCampanas = ({ campanas, paginaActual, totalPaginas, onCambiarPagina
 
             <div className="flex-grow-1">
               <div className="d-flex justify-content-between align-items-start gap-2">
-                <p className="fw-bold mb-1" style={{ color: 'var(--ink)' }}>{campana.nombre}</p>
+                <p className={`fw-bold mb-1 ${styles.name}`}>{campana.nombre}</p>
                 <span
-                  className="badge rounded-pill fw-semibold flex-shrink-0"
-                  style={
-                    esActiva(campana)
-                      ? { backgroundColor: 'transparent', color: 'var(--moss)', border: '1px solid var(--moss)' }
-                      : { backgroundColor: 'transparent', color: 'var(--ink)', opacity: 0.55, border: '1px solid var(--line)' }
-                  }
+                  className={`badge rounded-pill fw-semibold flex-shrink-0 ${esActiva(campana) ? styles.badgeActiva : styles.badgeFinalizada}`}
                 >
                   {esActiva(campana) ? 'Activa' : 'Finalizada'}
                 </span>
               </div>
-              <p className="small mb-1" style={{ color: 'var(--ink)', opacity: 0.7 }}>{campana.descripcion}</p>
-              <p className="small mb-0" style={{ color: 'var(--ink)', opacity: 0.55 }}>
+              <p className={`small mb-1 ${styles.description}`}>{campana.descripcion}</p>
+              <p className={`small mb-0 ${styles.vigencia}`}>
                 <i className="bi bi-calendar-event me-1"></i>
                 {campana.vigencia}
               </p>
@@ -56,7 +45,7 @@ const ListadoCampanas = ({ campanas, paginaActual, totalPaginas, onCambiarPagina
         ))}
 
         {campanas.length === 0 && (
-          <p className="text-center small py-4 mb-0" style={{ color: 'var(--ink)', opacity: 0.6 }}>
+          <p className={`text-center small py-4 mb-0 ${styles.empty}`}>
             No hay campañas para mostrar en este estado.
           </p>
         )}

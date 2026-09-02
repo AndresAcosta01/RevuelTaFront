@@ -25,7 +25,7 @@ function ProductoCard({
             </div>
 
             <div className={styles.footer}>
-                <span className={styles.price}>${precio.toLocaleString("es-CO")} USD</span>
+                <span className={styles.price}>${precio.toLocaleString("es-CO")}</span>
 
                 <div className={styles.actions}>
                     <button
@@ -36,7 +36,7 @@ function ProductoCard({
                         🛒
                     </button>
                     <button className={styles.tradeButton} onClick={onTrueque}>
-                        Trueque
+                        Ver mas +
                     </button>
                 </div>
             </div>

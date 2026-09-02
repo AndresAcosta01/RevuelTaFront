@@ -8,7 +8,7 @@ return (
         className={`${styles.imagePanel} col-4 col-md-3 d-flex justify-content-center align-items-center`}
         style={oferta.imagen ? { backgroundImage: `url(${oferta.imagen})` } : undefined}
         >
-        {!oferta.imagen && <i className="bi bi-image fs-2" style={{ color: 'var(--line)' }}></i>}
+        {!oferta.imagen && <i className={`bi bi-image fs-2 ${styles.placeholderIcon}`}></i>}
         </div>
 
         <div className={`${styles.content} col-8 col-md-9 p-3 d-flex flex-column justify-content-center position-relative`}>

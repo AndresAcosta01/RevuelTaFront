@@ -22,3 +22,12 @@
   color: var(--ink);
   opacity: 0.65;
 }
+
+.progressTrack {
+  height: 8px;
+  background-color: var(--paper);
+}
+
+.progressBar {
+  background-color: var(--moss);
+}

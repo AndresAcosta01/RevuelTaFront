@@ -24,11 +24,11 @@ return (
         </button>
     </div>
 
-    <div className="progress mt-3" style={{ height: '8px', backgroundColor: 'var(--paper)' }}>
+    <div className={`progress mt-3 ${styles.progressTrack}`}>
         <div
-        className="progress-bar"
+        className={`progress-bar ${styles.progressBar}`}
         role="progressbar"
-        style={{ width: `${progresoPorcentaje}%`, backgroundColor: 'var(--moss)' }}
+        style={{ width: `${progresoPorcentaje}%` }}
         aria-valuenow={progresoPorcentaje}
         aria-valuemin="0"
         aria-valuemax="100"
