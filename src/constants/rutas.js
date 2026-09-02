@@ -9,5 +9,6 @@ export const RUTAS = {
     PUBLICAR_PRENDA: "/publicar-prenda",
     REGISTRO: "/registro",
     INICIAR_SESION: "/iniciar-sesion",
-    SEGUIMIENTO_ENVIO: "/seguimiento-envio"
+    SEGUIMIENTO_ENVIO: "/seguimiento-envio",
+    RECUPERAR_CONTRASENA: "/recuperar-contrasena"
 }

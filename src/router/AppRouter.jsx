@@ -6,6 +6,8 @@ import MisPedidos from "../pages/Pedidos/MisPedidos"
 import SeguimientoEnvio from "../pages/SeguimientoEnvio/SeguimientoEnvio"
 import Home from "../components/pages/Home"
 import InicioSesion from "../pages/InicioSesion"
+import DescuentosCampanas from "../pages/mercadeo/DescuentosCampanas"
+import RecuperarContrasenaPage from "../components/RecuperacionContraseña/RecuperarContrasena"
 
 const AppRouter = () => {
     return (
@@ -16,7 +18,7 @@ const AppRouter = () => {
                     <Route path={RUTAS.PERFIL} element={null}/>
                     <Route path={RUTAS.PEDIDOS} element={<MisPedidos />}/>
                     <Route path={RUTAS.TRUEQUES} element={null}/>
-                    <Route path={RUTAS.CAMPANAS_DESCUENTOS} element={null}/>
+                    <Route path={RUTAS.CAMPANAS_DESCUENTOS} element={<DescuentosCampanas />} />
                     <Route path={RUTAS.CARRITO} element={null}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={null}/>
                     <Route path={RUTAS.CATALOGO} element={null}/>
@@ -25,6 +27,9 @@ const AppRouter = () => {
                 <Route element={<AuthLayout />}>
                     <Route path={RUTAS.REGISTRO} element={null}/>
                     <Route path={RUTAS.INICIAR_SESION} element={<InicioSesion />}/>
+                </Route>
+                <Route element={<AuthLayout />}>
+                    <Route path={RUTAS.RECUPERAR_CONTRASENA} element={<RecuperarContrasenaPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>
