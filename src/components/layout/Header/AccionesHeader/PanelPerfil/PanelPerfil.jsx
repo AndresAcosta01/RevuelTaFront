@@ -2,8 +2,12 @@ import { LogOut, UserRound } from "lucide-react"
 import styles from "./PanelPerfil.module.css"
 import opcionesMenuPerfil from "../OpcionMenuPerfil/opcionesMenuPerfil"
 import OpcionMenuPerfil from "../OpcionMenuPerfil/OpcionMenuPerfil"
+import { useAuth } from "../../../../../hooks/useAuth"
 
 const PanelPerfil = ({ cerrarPanelActivo, cerrarSesion }) => {
+    const { usuario } = useAuth()
+    const nombreUsuario = usuario?.nombre || usuario?.correo || "Nombre Usuario"
+
     return (
         <div className={styles.menuPerfil}>
             <div className={styles.datosPerfil}>
@@ -13,7 +17,7 @@ const PanelPerfil = ({ cerrarPanelActivo, cerrarSesion }) => {
                     </div>
 
                     <p className={styles.nombreUsuario}>
-                        Nombre Usuario
+                        {nombreUsuario}
                     </p>
                 </div>
 

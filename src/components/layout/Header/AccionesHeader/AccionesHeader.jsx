@@ -7,21 +7,15 @@ import { obtenerNotificaciones } from "../../../../services/notificacionesServic
 import { useEffect, useRef, useState } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { RUTAS } from "../../../../constants/rutas"
+import { useAuth } from "../../../../hooks/useAuth"
 
 const AccionesHeader = () => {
+    const { autenticado, cerrarSesion: cerrarSesionContexto } = useAuth()
+    const navigate = useNavigate()
+
     const [panelActivo, setPanelActivo] = useState(null)
     const [publicarMovilAbierto, setPublicarMovilAbierto] = useState(false)
 
-    const [estaAutenticado, setEstaAutenticado] = useState(() => {
-        const estadoGuardado = localStorage.getItem("estaAutenticado")
-
-        if (estadoGuardado === null) {
-            localStorage.setItem("estaAutenticado", "true")
-            return true
-        }
-
-        return estadoGuardado === "true"
-    })
     const notificaciones = obtenerNotificaciones()
     const contenedorAcciones = useRef(null)
 
@@ -62,38 +56,13 @@ const AccionesHeader = () => {
         setPanelActivo("publicar")
     }
 
-    function manejarClickFuera(event) {
-        if (
-            panelActivo !== null &&
-            contenedorAcciones.current &&
-            !contenedorAcciones.current.contains(event.target)
-        ) {
-            setPanelActivo(null)
-        }
-
-        if (
-            publicarMovilAbierto &&
-            contenedorAcciones.current &&
-            !contenedorAcciones.current.contains(event.target)
-        ) {
-            setPublicarMovilAbierto(false)
-        }
-    }
-
     function cerrarSesion() {
-        localStorage.setItem("estaAutenticado", "false")
+        cerrarSesionContexto()
 
-        setEstaAutenticado(false)
         setPanelActivo(null)
         setPublicarMovilAbierto(false)
 
         navigate(RUTAS.LANDING_PAGE)
-    }
-
-    function activarSesionPrueba() {
-        localStorage.setItem("estaAutenticado", "true")
-        setEstaAutenticado(true)
-        setPanelActivo(null)
     }
 
     const cerrarPanelActivo = () => {
@@ -102,6 +71,24 @@ const AccionesHeader = () => {
     }
 
     useEffect(() => {
+        function manejarClickFuera(event) {
+            if (
+                panelActivo !== null &&
+                contenedorAcciones.current &&
+                !contenedorAcciones.current.contains(event.target)
+            ) {
+                setPanelActivo(null)
+            }
+
+            if (
+                publicarMovilAbierto &&
+                contenedorAcciones.current &&
+                !contenedorAcciones.current.contains(event.target)
+            ) {
+                setPublicarMovilAbierto(false)
+            }
+        }
+
         document.addEventListener("mousedown", manejarClickFuera)
 
         return () => {
@@ -111,35 +98,33 @@ const AccionesHeader = () => {
 
     return (
         <>
-            <div className={styles.accionesHeader} ref={contenedorAcciones}>
-                {import.meta.env.DEV && (
-                    <button
-                        type="button"
-                        className={styles.botonSesionPrueba}
-                        onClick={activarSesionPrueba}>
-                    </button>
-                )}
+            <div
+                className={styles.accionesHeader}
+                ref={contenedorAcciones}
+            >
                 <button
                     className={`${styles.botonIcono} ${panelActivo === "notificaciones"
                         ? styles.botonIconoActivo
                         : ""
                         }`}
-                    onClick={alternarNotificaciones}>
+                    onClick={alternarNotificaciones}
+                >
                     <Bell />
 
-                    {estaAutenticado && notificaciones.length > 0 && (
+                    {autenticado && notificaciones.length > 0 && (
                         <span className={styles.indicadorNotificacion}></span>
                     )}
                 </button>
 
-                {estaAutenticado ? (
+                {autenticado ? (
                     <NavLink
                         to={RUTAS.CARRITO}
                         className={styles.botonIcono}
-                        onClick={cerrarPanelActivo}>
+                        onClick={cerrarPanelActivo}
+                    >
                         <ShoppingCart />
 
-                        {estaAutenticado && cantidadCarrito > 0 && (
+                        {cantidadCarrito > 0 && (
                             <span className={styles.contadorCarrito}>
                                 {contadorCarrito}
                             </span>
@@ -151,14 +136,9 @@ const AccionesHeader = () => {
                             ? styles.botonIconoActivo
                             : ""
                             }`}
-                        onClick={alternarCarrito}>
+                        onClick={alternarCarrito}
+                    >
                         <ShoppingCart />
-
-                        {estaAutenticado && cantidadCarrito > 0 && (
-                            <span className={styles.contadorCarrito}>
-                                {contadorCarrito}
-                            </span>
-                        )}
                     </button>
                 )}
 
@@ -167,22 +147,25 @@ const AccionesHeader = () => {
                         ? styles.botonIconoActivo
                         : ""
                         }`}
-                    onClick={alternarMenuPerfil}>
+                    onClick={alternarMenuPerfil}
+                >
                     <UserRound />
                 </button>
 
-                {estaAutenticado ? (
+                {autenticado ? (
                     <NavLink
                         to={RUTAS.PUBLICAR_PRENDA}
                         className={styles.botonPublicar}
-                        onClick={cerrarPanelActivo}>
+                        onClick={cerrarPanelActivo}
+                    >
                         <Plus className={styles.iconoBotonPublicar} />
                         Publicar prenda
                     </NavLink>
                 ) : (
                     <button
                         className={styles.botonPublicar}
-                        onClick={abrirIdentificacionPublicar}>
+                        onClick={abrirIdentificacionPublicar}
+                    >
                         <Plus className={styles.iconoBotonPublicar} />
                         Publicar prenda
                     </button>
@@ -190,11 +173,12 @@ const AccionesHeader = () => {
 
                 <div className={styles.publicarFlotante}>
                     {publicarMovilAbierto && (
-                        estaAutenticado ? (
+                        autenticado ? (
                             <NavLink
                                 to={RUTAS.PUBLICAR_PRENDA}
                                 className={styles.accionPublicarMovil}
-                                onClick={cerrarPanelActivo}>
+                                onClick={cerrarPanelActivo}
+                            >
                                 <Plus className={styles.iconoBotonPublicar} />
                                 Publicar prenda
                             </NavLink>
@@ -202,7 +186,8 @@ const AccionesHeader = () => {
                             <button
                                 type="button"
                                 className={styles.accionPublicarMovil}
-                                onClick={abrirIdentificacionPublicar}>
+                                onClick={abrirIdentificacionPublicar}
+                            >
                                 <Plus className={styles.iconoBotonPublicar} />
                                 Publicar prenda
                             </button>
@@ -215,28 +200,31 @@ const AccionesHeader = () => {
                             ? styles.botonPublicarFlotanteAbierto
                             : ""
                             }`}
-                        onClick={alternarPublicarMovil}>
+                        onClick={alternarPublicarMovil}
+                    >
                         <Plus />
                     </button>
                 </div>
 
-                {estaAutenticado && panelActivo === "perfil" && (
+                {autenticado && panelActivo === "perfil" && (
                     <PanelPerfil
                         cerrarPanelActivo={cerrarPanelActivo}
-                        cerrarSesion={cerrarSesion} />
+                        cerrarSesion={cerrarSesion}
+                    />
                 )}
 
-                {estaAutenticado && panelActivo === "notificaciones" && (
+                {autenticado && panelActivo === "notificaciones" && (
                     <PanelNotificaciones
-                        notificaciones={notificaciones} />
+                        notificaciones={notificaciones}
+                    />
                 )}
 
-                {!estaAutenticado && panelActivo !== null && (
+                {!autenticado && panelActivo !== null && (
                     <PanelIdentificacion />
                 )}
             </div>
 
-            {estaAutenticado && (
+            {autenticado && (
                 panelActivo === "perfil" ||
                 panelActivo === "notificaciones"
             ) && (
