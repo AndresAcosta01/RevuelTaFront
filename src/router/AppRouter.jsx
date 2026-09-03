@@ -20,7 +20,7 @@ const AppRouter = () => {
                     <Route path={RUTAS.CARRITO} element={null}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={null}/>
                     <Route path={RUTAS.CATALOGO} element={null}/>
-                    <Route path={RUTAS.SEGUIMIENTO_ENVIO} element={<SeguimientoEnvio />}/>
+                    <Route path={`${RUTAS.SEGUIMIENTO_ENVIO}/:pedidoId`} element={<SeguimientoEnvio />}/>
                 </Route>
                 <Route element={<AuthLayout />}>
                     <Route path={RUTAS.REGISTRO} element={null}/>

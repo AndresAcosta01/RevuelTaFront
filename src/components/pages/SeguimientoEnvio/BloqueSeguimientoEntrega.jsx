@@ -1,7 +1,13 @@
 import styles from "./BloqueSeguimientoEntrega.module.css"
 import MapaPuntoAcopio from "./MapaPuntoAcopio"
 
-const BloqueSeguimientoEntrega = ({ entrega }) => {
+const BloqueSeguimientoEntrega = ({ entrega, invertir }) => {
+    console.log(
+        "ID:", entrega.id,
+        "| ORIGEN:", entrega.puntoOrigen?.nombre,
+        "| DESTINO:", entrega.puntoDestino?.nombre,
+        "| TIPO:", entrega.tipoEntrega
+    )
     const puntoVisible = entrega.tipoEntrega === "propia" ? entrega.puntoOrigen : entrega.puntoDestino
     const obtenerClaseEstado = (situacion) => {
         if (situacion === "completado") return styles.estadoCompletado;
@@ -22,8 +28,7 @@ const BloqueSeguimientoEntrega = ({ entrega }) => {
     return (
         <div className={styles.bloqueSeguimiento}>
             <div
-                className={`${styles.contenidoSeguimiento} ${entrega.tipoEntrega === "recibida" ? styles.contenidoInvertido : ""
-                    }`}>
+                className={`${styles.contenidoSeguimiento} ${invertir ? styles.contenidoInvertido : ""}`}>
                 <span className={styles.etiquetaEntrega}>{entrega.etiqueta}</span>
 
                 <section className={styles.seccionEstados}>

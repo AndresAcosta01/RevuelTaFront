@@ -109,14 +109,14 @@ const ListadoPedidos = ({ pedidos, imagenesPorPrenda, onVerResena }) => {
                         <section className={styles.pedidoAcciones}>
                             {pedido.estado === "En preparación" && (
                                 <>
-                                    <Link to={RUTAS.SEGUIMIENTO_ENVIO} className={styles.miLink}>Rastrear envío</Link>
+                                    <Link to={`${RUTAS.SEGUIMIENTO_ENVIO}/${pedido.id}`} className={styles.miLink}>Rastrear envío</Link>
                                     <Link className={styles.miLink}>Ver detalles</Link>
                                 </>
                             )}
 
                             {pedido.estado === "Enviado" && (
                                 <>
-                                    <Link to={RUTAS.SEGUIMIENTO_ENVIO} className={styles.miLink}>Rastrear envío</Link>
+                                    <Link to={`${RUTAS.SEGUIMIENTO_ENVIO}/${pedido.id}`} className={styles.miLink}>Rastrear envío</Link>
                                     <Link className={styles.miLink}>Ver detalles</Link>
                                 </>
                             )}

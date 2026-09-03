@@ -21,7 +21,9 @@ const MisPedidos = () => {
     4: imagenesProductos[16],
     5: imagenesProductos[2],
     6: imagenesProductos[4],
-  };
+    7: imagenesProductos[16],
+    8: imagenesProductos[18],
+  }
 
   const [estadoSeleccionado, setEstadoSeleccionado] = useState("Todos");
 
@@ -75,7 +77,7 @@ const MisPedidos = () => {
 
       const desde = new Date(fechaDesde + "T00:00:00");
       const hasta = new Date(fechaHasta + "T23:59:59");
-      
+
       return fechaPedido >= desde && fechaPedido <= hasta;
     }
 

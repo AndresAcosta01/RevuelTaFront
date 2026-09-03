@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { obtenerPedidosProductos } from "../services/pedidosProductos";
 
-const PRODUCTOS_CON_IMAGEN = [1, 2, 3, 4, 16, 17, 19];
+const PRODUCTOS_CON_IMAGEN = [1, 2, 3, 4, 16, 17, 18, 19];
 
 function useProductosPedidos() {
     const [productos, setProductos] = useState([]);

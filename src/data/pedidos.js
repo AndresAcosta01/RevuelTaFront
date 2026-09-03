@@ -12,7 +12,6 @@ const pedidos = [
             }
         ]
     },
-
     {
         id: "002",
         fecha: "2026-08-09",
@@ -26,7 +25,6 @@ const pedidos = [
             }
         ]
     },
-
     {
         id: "003",
         fecha: "2026-08-20",
@@ -41,7 +39,6 @@ const pedidos = [
             }
         ]
     },
-
     {
         id: "004",
         fecha: "2026-08-25",
@@ -57,7 +54,6 @@ const pedidos = [
             }
         ]
     },
-
     {
         id: "005",
         fecha: "2026-08-26",
@@ -75,7 +71,24 @@ const pedidos = [
                 nombre: "Camibuso azul"
             }
         ]
+    },
+    {
+        id: "006",
+        fecha: "2026-08-27",
+        estado: "En preparación",
+        tipoOperacion: "trueque",
+        saldoTrueque: 0,
+        prendas: [
+            {
+                id: 7,
+                nombre: "Chaqueta negra"
+            },
+            {
+                id: 8,
+                nombre: "Camiseta blanca"
+            }
+        ]
     }
-];
+]
 
-export default pedidos;
+export default pedidos
