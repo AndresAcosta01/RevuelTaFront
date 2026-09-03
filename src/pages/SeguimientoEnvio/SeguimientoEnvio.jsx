@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react"
+import { createPortal } from "react-dom"
 import { useParams } from "react-router-dom"
 import styles from "./SeguimientoEnvio.module.css"
 import { obtenerSeguimientoEnvio } from "../../services/seguimientoEnvioServicio";
 import { ArrowLeftRight, Store } from "lucide-react";
 import BloqueSeguimientoEntrega from "../../components/pages/SeguimientoEnvio/BloqueSeguimientoEntrega";
+import LogicaPuntoAcopio from "../../components/PuntoAcopio/LogicaPuntoAcopio";
+import puntosAcopio from "../../data/PuntoAcopio";
 
 const SeguimientoEnvio = () => {
     const { pedidoId } = useParams()
     const [seguimiento, setSeguimiento] = useState({})
+    const [modalPuntoAcopioAbierto, setModalPuntoAcopioAbierto] = useState(false)
     useEffect(() => {
 
         const cargarSeguimiento = async () => {
@@ -18,6 +22,7 @@ const SeguimientoEnvio = () => {
         cargarSeguimiento();
 
     }, [pedidoId]);
+    
     return (
         <div className={styles.contenedorPrincipal}>
             <div className={styles.contenedorEncabezado}>
@@ -42,11 +47,25 @@ const SeguimientoEnvio = () => {
             {seguimiento.entregas?.length > 0 && (
                 <button
                     type="button"
-                    className={styles.botonCambiarPunto}>
-                    <Store />
+                    className={styles.botonCambiarPunto}
+                    onClick={() => setModalPuntoAcopioAbierto(true)}>
+                        <Store />
                     Cambiar punto de acopio
                 </button>
             )}
+
+            {modalPuntoAcopioAbierto &&
+                createPortal(
+                    <LogicaPuntoAcopio
+                        isOpen={modalPuntoAcopioAbierto}
+                        onClose={() => setModalPuntoAcopioAbierto(false)}
+                        estadoLogistico="Pendiente"
+                        puntoRecogidaOriginal={puntosAcopio[0]}
+                        puntoEntregaOriginal={puntosAcopio[1]}
+                        todosLosPuntos={puntosAcopio}
+                    />,
+                    document.body
+                )}
         </div>
     )
 }
