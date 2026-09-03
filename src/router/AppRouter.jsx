@@ -26,7 +26,7 @@ const AppRouter = () => {
                     <Route path={RUTAS.CAMPANAS_DESCUENTOS} element={<DescuentosCampanas />} />
                     <Route path={RUTAS.CARRITO} element={<Carrito />}/>
                     <Route path={RUTAS.PUBLICAR_PRENDA} element={null}/>
-                    <Route path={RUTAS.SEGUIMIENTO_ENVIO} element={<SeguimientoEnvio />}/>
+                    <Route path={`${RUTAS.SEGUIMIENTO_ENVIO}/:pedidoId`} element={<SeguimientoEnvio />}/>
                     <Route path={RUTAS.CATALOGO} element={<Catalogo />}/>
                     <Route path={RUTAS.DETALLE_PRODUCTO} element={<PaginaDetalleProducto />}/>
                 </Route>
