@@ -12,79 +12,128 @@ import styles from './Catalogo.module.css'
 
 function filtroInicialDesdeUrl(searchParams) {
   const categoria = searchParams.get('categoria')
+
   if (!categoria || categoria === 'todos') return {}
+
   const filtro = filtrosCatalogo.find((f) => f.id === 'categoria')
+
   const opcion = filtro.opciones.find(
     (o) =>
       o.id === categoria ||
       o.nombre.toLowerCase() === categoria.toLowerCase(),
   )
+
   return opcion ? { categoria: [opcion.id] } : {}
 }
 
-function claveConsulta(filtrosActivos, ordenSeleccionado, paginaActual) {
+function claveConsulta(
+  filtrosActivos,
+  ordenSeleccionado,
+  paginaActual,
+  terminoBusqueda,
+) {
   const filtros = Object.entries(filtrosActivos)
     .sort(([a], [b]) => a.localeCompare(b))
-    .map(([filtroId, opciones]) => `${filtroId}:${[...opciones].sort().join(',')}`)
+    .map(
+      ([filtroId, opciones]) =>
+        `${filtroId}:${[...opciones].sort().join(',')}`,
+    )
     .join('|')
-  return `${filtros}|${ordenSeleccionado}|${paginaActual}`
+
+  return `${filtros}|${ordenSeleccionado}|${paginaActual}|${terminoBusqueda}`
 }
 
 function Catalogo() {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
 
+  const terminoBusqueda = searchParams.get('busqueda')?.trim() || ''
+
   const [filtrosActivos, setFiltrosActivos] = useState(() =>
     filtroInicialDesdeUrl(searchParams),
   )
-  const [ordenSeleccionado, setOrdenSeleccionado] = useState('mas_recientes')
+
+  const [ordenSeleccionado, setOrdenSeleccionado] =
+    useState('mas_recientes')
+
   const [tipoVista, setTipoVista] = useState('cuadricula')
   const [paginaActual, setPaginaActual] = useState(1)
   const [filtrosVisibles, setFiltrosVisibles] = useState(true)
   const [paginasCargadas, setPaginasCargadas] = useState({})
 
   useEffect(() => {
-    const clave = claveConsulta(filtrosActivos, ordenSeleccionado, paginaActual)
+    setPaginaActual(1)
+  }, [terminoBusqueda])
+
+  useEffect(() => {
+    const clave = claveConsulta(
+      filtrosActivos,
+      ordenSeleccionado,
+      paginaActual,
+      terminoBusqueda,
+    )
+
     if (paginasCargadas[clave]) return
+
     let activo = true
+
     obtenerProductos({
       filtrosActivos,
       orden: ordenSeleccionado,
       pagina: paginaActual,
+      busqueda: terminoBusqueda,
     }).then((resultado) => {
       if (activo) {
-        setPaginasCargadas((prev) => ({ ...prev, [clave]: resultado }))
+        setPaginasCargadas((prev) => ({
+          ...prev,
+          [clave]: resultado,
+        }))
       }
     })
+
     return () => {
       activo = false
     }
-  }, [filtrosActivos, ordenSeleccionado, paginaActual, paginasCargadas])
+  }, [
+    filtrosActivos,
+    ordenSeleccionado,
+    paginaActual,
+    terminoBusqueda,
+    paginasCargadas,
+  ])
 
   const manejarCambioFiltro = (filtroId, opcionId) => {
     setFiltrosActivos((prev) => {
       const actual = prev[filtroId] || []
       const incluye = actual.includes(opcionId)
+
       const siguiente = incluye
         ? actual.filter((id) => id !== opcionId)
         : [...actual, opcionId]
+
       const nuevo = { ...prev }
+
       if (siguiente.length === 0) {
         delete nuevo[filtroId]
       } else {
         nuevo[filtroId] = siguiente
       }
+
       return nuevo
     })
+
     setPaginaActual(1)
   }
 
   const manejarCancelarFiltro = (filtroId) => {
     setFiltrosActivos((prev) => {
       const nuevo = { ...prev }
+
       delete nuevo[filtroId]
+
       return nuevo
     })
+
     setPaginaActual(1)
   }
 
@@ -102,17 +151,27 @@ function Catalogo() {
   }
 
   const manejarSeleccionarProducto = (producto) => {
-    navigate(RUTAS.DETALLE_PRODUCTO.replace(':id', String(producto.id)))
+    navigate(
+      RUTAS.DETALLE_PRODUCTO.replace(':id', String(producto.id)),
+    )
   }
 
-  const paginaCargada =
-    paginasCargadas[claveConsulta(filtrosActivos, ordenSeleccionado, paginaActual)]
+  const claveActual = claveConsulta(
+    filtrosActivos,
+    ordenSeleccionado,
+    paginaActual,
+    terminoBusqueda,
+  )
+
+  const paginaCargada = paginasCargadas[claveActual]
+
   const productosPagina = paginaCargada?.productos || []
   const totalPaginas = paginaCargada?.totalPaginas || 1
 
   return (
     <div className={styles.catalogo}>
       <h1 className={styles.catalogoTitulo}>Catálogo</h1>
+
       <div className={styles.catalogoCuerpo}>
         {filtrosVisibles ? (
           <FiltrosCatalogo
@@ -132,6 +191,7 @@ function Catalogo() {
             <FaChevronRight />
           </button>
         )}
+
         <div className={styles.catalogoContenido}>
           <ControlesCatalogo
             filtros={filtrosCatalogo}
@@ -142,11 +202,13 @@ function Catalogo() {
             onCambiarOrden={manejarCambiarOrden}
             onCambiarVista={manejarCambiarVista}
           />
+
           <ProductosCatalogo
             productos={productosPagina}
             tipoVista={tipoVista}
             onSeleccionarProducto={manejarSeleccionarProducto}
           />
+
           <PaginacionCatalogo
             paginaActual={paginaActual}
             totalPaginas={totalPaginas}
