@@ -1,9 +1,12 @@
-import './App.css'
+
 import AppRouter from './router/AppRouter'
+import ProveedorAutenticacion from './context/ProveedorAutenticacion'
 
 function App() {
 
-  return <AppRouter />
+  return (
+    <ProveedorAutenticacion><AppRouter /></ProveedorAutenticacion>
+  )
 }
 
 export default App
